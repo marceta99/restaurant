@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDomainObjekat.cs" />
     <Compile Include="Kategorija.cs" />
     <Compile Include="NarucenaStavka.cs" />
     <Compile Include="Porucivanje.cs" />

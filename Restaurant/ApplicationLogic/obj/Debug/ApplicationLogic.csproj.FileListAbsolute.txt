@@ -8,3 +8,16 @@ C:\Users\MihailoM\source\repos\Restaurant\ApplicationLogic\obj\Debug\Application
 C:\Users\MihailoM\source\repos\Restaurant\ApplicationLogic\obj\Debug\ApplicationLogic.csproj.CoreCompileInputs.cache
 C:\Users\MihailoM\source\repos\Restaurant\ApplicationLogic\obj\Debug\ApplicationLogic.dll
 C:\Users\MihailoM\source\repos\Restaurant\ApplicationLogic\obj\Debug\ApplicationLogic.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\bin\Debug\ApplicationLogic.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\bin\Debug\ApplicationLogic.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\bin\Debug\DatabaseBroker.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\bin\Debug\Domain.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\bin\Debug\DatabaseBroker.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\bin\Debug\Domain.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\obj\Debug\ApplicationLogic.csproj.AssemblyReference.cache
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\obj\Debug\ApplicationLogic.csproj.CoreCompileInputs.cache
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\obj\Debug\ApplicationLogic.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\obj\Debug\ApplicationLogic.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\bin\Debug\SistemskeOperacije.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\bin\Debug\SistemskeOperacije.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ApplicationLogic\obj\Debug\ApplicationLogic.csproj.CopyComplete

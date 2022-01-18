@@ -1,0 +1,11 @@
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\obj\Debug\SistemskeOperacije.csproj.AssemblyReference.cache
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\obj\Debug\SistemskeOperacije.csproj.CoreCompileInputs.cache
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\bin\Debug\SistemskeOperacije.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\bin\Debug\SistemskeOperacije.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\bin\Debug\DatabaseBroker.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\bin\Debug\Domain.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\bin\Debug\DatabaseBroker.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\bin\Debug\Domain.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\obj\Debug\SistemskeOperacije.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\obj\Debug\SistemskeOperacije.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\obj\Debug\SistemskeOperacije.csproj.CopyComplete

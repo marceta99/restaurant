@@ -1,4 +1,6 @@
 ﻿
+using Domain;
+using Restaurant.GuiControllers;
 using Restaurant.ServerCommunication;
 using Restaurant.UserControls;
 using System;
@@ -16,15 +18,12 @@ namespace Restaurant
 {
     public partial class FormMain : Form
     {
+        private ControllerMain _controllerMain;
         public FormMain()
         {
             InitializeComponent();
-            /*buttonPorucivanje.Visible = Controller.Instance.IsKonobar;
-            buttonPorudzbine.Visible = Controller.Instance.IsKonobar;
-
-            buttonStavkeCenovnika.Visible = Controller.Instance.IsMenadzer;
-            buttonStolovi.Visible = Controller.Instance.IsMenadzer;*/
-
+            _controllerMain = new ControllerMain(this);
+            _controllerMain.initData();
         }
 
         private void buttonStolovi_Click(object sender, EventArgs e)
@@ -65,11 +64,6 @@ namespace Restaurant
                 Dock = DockStyle.Fill
             };
             panelLeft.Controls.Add(ucPorudzbine);
-        }
-
-        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Communication.Instance.CloseConnection();
         }
 
 

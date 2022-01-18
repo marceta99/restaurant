@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Restaurant
 {
     partial class FormIzmenaNaplataStavke
@@ -160,7 +162,7 @@ namespace Restaurant
             this.comboBoxKategorija.Name = "comboBoxKategorija";
             this.comboBoxKategorija.Size = new System.Drawing.Size(168, 30);
             this.comboBoxKategorija.TabIndex = 39;
-            this.comboBoxKategorija.SelectedIndexChanged += new System.EventHandler(this.comboBoxKategorija_SelectedIndexChanged);
+            
             // 
             // label2
             // 
@@ -201,7 +203,7 @@ namespace Restaurant
             this.buttonDodajStavkuUPorudzbinu.TabIndex = 23;
             this.buttonDodajStavkuUPorudzbinu.Text = "Dodaj novu stavku u porudzbinu";
             this.buttonDodajStavkuUPorudzbinu.UseVisualStyleBackColor = true;
-            this.buttonDodajStavkuUPorudzbinu.Click += new System.EventHandler(this.buttonDodajStavkuUPorudzbinu_Click);
+            
             // 
             // buttonIzbrisiIzabranuStavku
             // 
@@ -212,7 +214,7 @@ namespace Restaurant
             this.buttonIzbrisiIzabranuStavku.TabIndex = 54;
             this.buttonIzbrisiIzabranuStavku.Text = "Izbrisi izabranu stavku";
             this.buttonIzbrisiIzabranuStavku.UseVisualStyleBackColor = true;
-            this.buttonIzbrisiIzabranuStavku.Click += new System.EventHandler(this.buttonIzbrisiIzabranuStavku_Click);
+            
             // 
             // dataGridViewStavkeUPorudzbini
             // 
@@ -233,7 +235,7 @@ namespace Restaurant
             this.buttonSmanjiBrojPorcija.TabIndex = 60;
             this.buttonSmanjiBrojPorcija.Text = "Smanji Broj Porcija";
             this.buttonSmanjiBrojPorcija.UseVisualStyleBackColor = true;
-            this.buttonSmanjiBrojPorcija.Click += new System.EventHandler(this.buttonSmanjiBrojPorcija_Click);
+            
             // 
             // FormIzmenaNaplataStavke
             // 
@@ -277,5 +279,23 @@ namespace Restaurant
         private System.Windows.Forms.Button buttonIzbrisiIzabranuStavku;
         private System.Windows.Forms.DataGridView dataGridViewStavkeUPorudzbini;
         private System.Windows.Forms.Button buttonSmanjiBrojPorcija;
+
+        public Label Label9 { get => label9; set => label9 = value; }
+        public Label LabelUkupnaCena { get => labelUkupnaCena; set => labelUkupnaCena = value; }
+        public Label Label6 { get => label6; set => label6 = value; }
+        public Label Label1 { get => label1; set => label1 = value; }
+        public GroupBox GroupBox1 { get => groupBox1; set => groupBox1 = value; }
+        public ComboBox ComboBoxBrojPorcija { get => comboBoxBrojPorcija; set => comboBoxBrojPorcija = value; }
+        public Label Label5 { get => label5; set => label5 = value; }
+        public ComboBox ComboBoxStavkaMenija { get => comboBoxStavkaMenija; set => comboBoxStavkaMenija = value; }
+        public Label Label4 { get => label4; set => label4 = value; }
+        public ComboBox ComboBoxKategorija { get => comboBoxKategorija; set => comboBoxKategorija = value; }
+        public Label Label2 { get => label2; set => label2 = value; }
+        public Label Label8 { get => label8; set => label8 = value; }
+        public ComboBox ComboBoxSto { get => comboBoxSto; set => comboBoxSto = value; }
+        public Button ButtonDodajStavkuUPorudzbinu { get => buttonDodajStavkuUPorudzbinu; set => buttonDodajStavkuUPorudzbinu = value; }
+        public Button ButtonIzbrisiIzabranuStavku { get => buttonIzbrisiIzabranuStavku; set => buttonIzbrisiIzabranuStavku = value; }
+        public DataGridView DataGridViewStavkeUPorudzbini { get => dataGridViewStavkeUPorudzbini; set => dataGridViewStavkeUPorudzbini = value; }
+        public Button ButtonSmanjiBrojPorcija { get => buttonSmanjiBrojPorcija; set => buttonSmanjiBrojPorcija = value; }
     }
 }

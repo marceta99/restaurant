@@ -397,19 +397,27 @@ namespace ServerProject
                 {
                     CloseSocket();  //u svakom slucaju trebamo da zatvorimo sokete i ako je pukla greska i ako se zavrsilo okej     
                 }
+                this._clients.Remove(this); //ovde izbacujemo ovaj klijentski soket iz liste povezanih klijenata
                 
             }
         }
-
+        private object lockObject = new object();
         internal void CloseSocket()
         {
-            if (klijentskiSocket != null) //ako je klijentski soket vec zatvoren ne zatvaraj ga vise puta
-            {
-                _clients.Remove(this); //sklanjamo klijenta iz liste prijavljenih klijenata 
-                _kraj = true;
-                klijentskiSocket.Shutdown(SocketShutdown.Both);
-                klijentskiSocket.Close();
-                klijentskiSocket = null;
+            lock (lockObject)//ako se u nekom paralelno univerzumu desi da klijent i server u istoj sekundi 
+            {                 //se iskljuce, onda ce u isto vreme se u ovu closeSocket metodu uci na dva mesta
+                              //odnosno sa dve niti.Jedna je glavna programska nit koja ce pokrenuti ovo close
+                              //na klik dugmeta stop server.Druga nit je ova koja izvrsava handle request ovog
+                              //clinet handlera, i ona ce ako se klijent iskljuci da ode u onaj finally i da 
+                              //pokrene closeSocket metodu sa druge niti.Zato smo izvrsili sinhronizaciju sa lock.
+                if (klijentskiSocket != null) //ako je klijentski soket vec zatvoren ne zatvaraj ga vise puta
+                {
+                    _clients.Remove(this); //sklanjamo klijenta iz liste prijavljenih klijenata 
+                    _kraj = true;
+                    klijentskiSocket.Shutdown(SocketShutdown.Both);
+                    klijentskiSocket.Close();
+                    klijentskiSocket = null;
+                }
             }
         }
     }

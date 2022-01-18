@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Restaurant.UserControls
 {
     partial class UserControlStavkaCenovnika
@@ -63,7 +65,7 @@ namespace Restaurant.UserControls
             this.buttonIzmeniStavku.TabIndex = 25;
             this.buttonIzmeniStavku.Text = "Izmeni Izabranu Stavku";
             this.buttonIzmeniStavku.UseVisualStyleBackColor = true;
-            this.buttonIzmeniStavku.Click += new System.EventHandler(this.buttonIzmeniStavku_Click);
+            
             // 
             // buttonIzbrisiStavku
             // 
@@ -74,7 +76,7 @@ namespace Restaurant.UserControls
             this.buttonIzbrisiStavku.TabIndex = 24;
             this.buttonIzbrisiStavku.Text = "Izbrisi izabranu stavku";
             this.buttonIzbrisiStavku.UseVisualStyleBackColor = true;
-            this.buttonIzbrisiStavku.Click += new System.EventHandler(this.buttonIzbrisiStavku_Click);
+            
             // 
             // buttonDodajStavku
             // 
@@ -85,7 +87,7 @@ namespace Restaurant.UserControls
             this.buttonDodajStavku.TabIndex = 23;
             this.buttonDodajStavku.Text = "Dodaj novu stavku";
             this.buttonDodajStavku.UseVisualStyleBackColor = true;
-            this.buttonDodajStavku.Click += new System.EventHandler(this.buttonDodajStavku_Click);
+            
             // 
             // label3
             // 
@@ -212,7 +214,7 @@ namespace Restaurant.UserControls
             this.buttonSacuvajIzmene.TabIndex = 40;
             this.buttonSacuvajIzmene.Text = "Sacuvaj Izmene";
             this.buttonSacuvajIzmene.UseVisualStyleBackColor = true;
-            this.buttonSacuvajIzmene.Click += new System.EventHandler(this.buttonSacuvajIzmene_Click);
+            
             // 
             // groupBox1
             // 
@@ -258,7 +260,7 @@ namespace Restaurant.UserControls
             this.comboBoxFilterKategorije.Name = "comboBoxFilterKategorije";
             this.comboBoxFilterKategorije.Size = new System.Drawing.Size(179, 30);
             this.comboBoxFilterKategorije.TabIndex = 41;
-            this.comboBoxFilterKategorije.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterKategorije_SelectedIndexChanged);
+            
             // 
             // textBoxProcenatPDV
             // 
@@ -267,7 +269,7 @@ namespace Restaurant.UserControls
             this.textBoxProcenatPDV.Name = "textBoxProcenatPDV";
             this.textBoxProcenatPDV.Size = new System.Drawing.Size(91, 28);
             this.textBoxProcenatPDV.TabIndex = 43;
-            this.textBoxProcenatPDV.Leave += new System.EventHandler(this.textBoxProcenatPDV_Leave);
+            
             // 
             // label5
             // 
@@ -321,5 +323,27 @@ namespace Restaurant.UserControls
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxProcenatPDV;
         private System.Windows.Forms.Label label5;
+
+        public Button ButtonIzmeniStavku { get => buttonIzmeniStavku; set => buttonIzmeniStavku = value; }
+        public Button ButtonIzbrisiStavku { get => buttonIzbrisiStavku; set => buttonIzbrisiStavku = value; }
+        public Button ButtonDodajStavku { get => buttonDodajStavku; set => buttonDodajStavku = value; }
+        public Label Label3 { get => label3; set => label3 = value; }
+        public DataGridView DataGridViewStavke { get => dataGridViewStavke; set => dataGridViewStavke = value; }
+        public ComboBox ComboBoxValuta { get => comboBoxValuta; set => comboBoxValuta = value; }
+        public Label Label2 { get => label2; set => label2 = value; }
+        public Label Label1 { get => label1; set => label1 = value; }
+        public TextBox TextBoxNazivStavke { get => textBoxNazivStavke; set => textBoxNazivStavke = value; }
+        public Label Label6 { get => label6; set => label6 = value; }
+        public TextBox TextBoxCenaSaPDV { get => textBoxCenaSaPDV; set => textBoxCenaSaPDV = value; }
+        public TextBox TextBoxCenaBezPDV { get => textBoxCenaBezPDV; set => textBoxCenaBezPDV = value; }
+        public Label Label7 { get => label7; set => label7 = value; }
+        public ComboBox ComboBoxKategorija { get => comboBoxKategorija; set => comboBoxKategorija = value; }
+        public Label Label8 { get => label8; set => label8 = value; }
+        public Button ButtonSacuvajIzmene { get => buttonSacuvajIzmene; set => buttonSacuvajIzmene = value; }
+        public GroupBox GroupBox1 { get => groupBox1; set => groupBox1 = value; }
+        public ComboBox ComboBoxFilterKategorije { get => comboBoxFilterKategorije; set => comboBoxFilterKategorije = value; }
+        public Label Label4 { get => label4; set => label4 = value; }
+        public TextBox TextBoxProcenatPDV { get => textBoxProcenatPDV; set => textBoxProcenatPDV = value; }
+        public Label Label5 { get => label5; set => label5 = value; }
     }
 }

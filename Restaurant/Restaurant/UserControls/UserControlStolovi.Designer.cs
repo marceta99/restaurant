@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Restaurant.UserControls
 {
     partial class UserControlStolovi
@@ -105,7 +107,7 @@ namespace Restaurant.UserControls
             this.buttonDodajSto.TabIndex = 9;
             this.buttonDodajSto.Text = "Dodaj novi sto";
             this.buttonDodajSto.UseVisualStyleBackColor = true;
-            this.buttonDodajSto.Click += new System.EventHandler(this.buttonDodajSto_Click);
+         
             // 
             // buttonIzbrisiSto
             // 
@@ -116,7 +118,7 @@ namespace Restaurant.UserControls
             this.buttonIzbrisiSto.TabIndex = 10;
             this.buttonIzbrisiSto.Text = "Izbrisi izabrani sto";
             this.buttonIzbrisiSto.UseVisualStyleBackColor = true;
-            this.buttonIzbrisiSto.Click += new System.EventHandler(this.buttonIzbrisiSto_Click);
+            
             // 
             // buttonIzmeniSto
             // 
@@ -127,7 +129,7 @@ namespace Restaurant.UserControls
             this.buttonIzmeniSto.TabIndex = 11;
             this.buttonIzmeniSto.Text = "Izmeni Izabrani Sto";
             this.buttonIzmeniSto.UseVisualStyleBackColor = true;
-            this.buttonIzmeniSto.Click += new System.EventHandler(this.buttonIzmeniSto_Click);
+            
             // 
             // comboBoxBrojStola
             // 
@@ -160,7 +162,7 @@ namespace Restaurant.UserControls
             this.buttonSacuvajIzmene.TabIndex = 16;
             this.buttonSacuvajIzmene.Text = "Sacuvaj Izmene";
             this.buttonSacuvajIzmene.UseVisualStyleBackColor = true;
-            this.buttonSacuvajIzmene.Click += new System.EventHandler(this.buttonSacuvajIzmene_Click);
+            
             // 
             // comboBoxIzmenjeniBrojeviStolica
             // 
@@ -235,5 +237,20 @@ namespace Restaurant.UserControls
         private System.Windows.Forms.ComboBox comboBoxIzmenjeniBrojeviStolica;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+
+        public Label Label1 { get => label1; set => label1 = value; }
+        public Label Label2 { get => label2; set => label2 = value; }
+        public ComboBox ComboBoxBrojStolica { get => comboBoxBrojStolica; set => comboBoxBrojStolica = value; }
+        public DataGridView DataGridViewStolovi { get => dataGridViewStolovi; set => dataGridViewStolovi = value; }
+        public Label Label3 { get => label3; set => label3 = value; }
+        public Button ButtonDodajSto { get => buttonDodajSto; set => buttonDodajSto = value; }
+        public Button ButtonIzbrisiSto { get => buttonIzbrisiSto; set => buttonIzbrisiSto = value; }
+        public Button ButtonIzmeniSto { get => buttonIzmeniSto; set => buttonIzmeniSto = value; }
+        public ComboBox ComboBoxBrojStola { get => comboBoxBrojStola; set => comboBoxBrojStola = value; }
+        public ComboBox ComboBoxIzmenjeniBrojeviStola { get => comboBoxIzmenjeniBrojeviStola; set => comboBoxIzmenjeniBrojeviStola = value; }
+        public Button ButtonSacuvajIzmene { get => buttonSacuvajIzmene; set => buttonSacuvajIzmene = value; }
+        public ComboBox ComboBoxIzmenjeniBrojeviStolica { get => comboBoxIzmenjeniBrojeviStolica; set => comboBoxIzmenjeniBrojeviStolica = value; }
+        public Label Label4 { get => label4; set => label4 = value; }
+        public Label Label5 { get => label5; set => label5 = value; }
     }
 }

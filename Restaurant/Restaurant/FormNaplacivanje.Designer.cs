@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Restaurant
 {
     partial class FormNaplacivanje
@@ -52,7 +54,7 @@ namespace Restaurant
             this.buttonNaplaceno.TabIndex = 0;
             this.buttonNaplaceno.Text = "Naplaćeno";
             this.buttonNaplaceno.UseVisualStyleBackColor = true;
-            this.buttonNaplaceno.Click += new System.EventHandler(this.buttonNaplaceno_Click);
+            
             // 
             // label1
             // 
@@ -169,5 +171,15 @@ namespace Restaurant
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+
+        public Button ButtonNaplaceno { get => buttonNaplaceno; set => buttonNaplaceno = value; }
+        public Label Label1 { get => label1; set => label1 = value; }
+        public Label LabelDatum { get => labelDatum; set => labelDatum = value; }
+        public Label Label3 { get => label3; set => label3 = value; }
+        public Panel Panel1 { get => panel1; set => panel1 = value; }
+        public Label LabelDatumPor { get => labelDatumPor; set => labelDatumPor = value; }
+        public Label Label5 { get => label5; set => label5 = value; }
+        public Label Label4 { get => label4; set => label4 = value; }
+        public Label Label2 { get => label2; set => label2 = value; }
     }
 }

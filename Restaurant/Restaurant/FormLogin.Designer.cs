@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Restaurant
 {
     partial class FormLogin
@@ -45,7 +47,7 @@ namespace Restaurant
             this.buttonLogin.TabIndex = 0;
             this.buttonLogin.Text = "login";
             this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            
             // 
             // label1
             // 
@@ -118,6 +120,13 @@ namespace Restaurant
         private System.Windows.Forms.TextBox textBoxSifra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+
+        public Button ButtonLogin { get => buttonLogin; set => buttonLogin = value; }
+        public Label Label1 { get => label1; set => label1 = value; }
+        public TextBox TextBoxKorisnickoIme { get => textBoxKorisnickoIme; set => textBoxKorisnickoIme = value; }
+        public TextBox TextBoxSifra { get => textBoxSifra; set => textBoxSifra = value; }
+        public Label Label2 { get => label2; set => label2 = value; }
+        public Label Label3 { get => label3; set => label3 = value; }
     }
 }
 

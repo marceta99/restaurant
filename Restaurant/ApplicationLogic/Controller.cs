@@ -1,5 +1,10 @@
 ﻿using DatabaseBroker;
 using Domain;
+using SistemskeOperacije;
+using SistemskeOperacije.LoginSO;
+using SistemskeOperacije.PorudzbineOS;
+using SistemskeOperacije.StavkeCenovnikaSO;
+using SistemskeOperacije.StoSO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,160 +16,82 @@ namespace ApplicationLogic
     public class Controller
     {
         private static Controller _instance;
-        private bool _isKonobar;
-        private bool _isMenadzer;
+        private static object _lockObject = new object(); //ovaj lock objekat ce da obezbedi thread safety ovog singletona
         private Controller()
-        {
-           
+        {   
         }
         public static Controller Instance
         {
             get 
             {
-                if(_instance == null)
+                if (_instance == null) //ovo se zove Double-checked locking i omoguava thread safety singletona u C#
                 {
-                    _instance = new Controller();
+                    lock (_lockObject) //dodali smo jos jedan if gore zbog performansi jer necemo da se stalno koristi ovaj lock
+                    {                           //vec samo prvi put kada je instanca null .
+                        if (_instance == null)
+                        {
+                            _instance = new Controller();
+                        }
+                    }
                 }
                 return _instance;
             }
         }
 
-        public bool IsKonobar {
-            get
-            {
-                return _isKonobar;
-            }
-        }
-        public bool IsMenadzer
-        {
-            get
-            {
-                return _isMenadzer; 
-            }
-        }
-
-
         public Korisnik Login(string korisnickoIme, string sifra)
         {
-            Broker broker = new Broker();
+            OpstaSistemskaOperacija so = new LoginSO(korisnickoIme,sifra);
+            so.ExecuteTemplate();
+            return ((LoginSO)so).Rezultat;
 
-            try
-            {
-                broker.OpenConnection();
-
-                List<Korisnik> korisnici = broker.VratiSveKorisnike();
-
-                foreach (var korisnik in korisnici)
-                {
-                    if (korisnik.KorisnickoIme == korisnickoIme && korisnik.Sifra == sifra)
-                    {
-                        _isKonobar = korisnik.Uloga == Uloga.Konobar ? true : false;
-                        _isMenadzer = !_isKonobar;
-                        return korisnik;
-                    }
-                }
-                return null;
-            }
-            finally
-            {
-                broker.CloseConnection();
-            }
+            
         }
 
         #region Stolovi
         public List<Sto> VratiSveStolove()
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            List<Sto> stolovi = broker.VratiSveStolove();
-            broker.CloseConnection();
-
-            return stolovi;             
+            OpstaSistemskaOperacija so = new VratiSveStoloveSO();
+            so.ExecuteTemplate();
+            return ((VratiSveStoloveSO)so).Rezultat;
         }
         public List<Sto> VratiSveStoloveSaStatusomPorudzbine(StatusPorudzbine status)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            List<Sto> stolovi = broker.VratiSveStoloveSaStatusomPorudzbine(status);
-            broker.CloseConnection();
-
-            return stolovi;
+            OpstaSistemskaOperacija so = new VratiSveStoloveSaStatusomPorudzbineSO(status);
+            so.ExecuteTemplate();
+            return ((VratiSveStoloveSaStatusomPorudzbineSO)so).Rezultat;
         }
         public void ObrisiSto(Sto sto)
         {
-            Broker broker = new Broker();
-            broker.OpenConnection();
-
-            try
-            {
-                broker.ObrisiSto(sto);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                broker.CloseConnection();
-            }
+            OpstaSistemskaOperacija so = new ObrisiStoSO(sto);
+            so.ExecuteTemplate();
         }
 
         public void DodajNoviSto(Sto sto)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.DodajNoviSto(sto);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new DodajNoviStoSO(sto);
+            so.ExecuteTemplate();
         }
         public void IzmeniSto(Sto sto)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.IzmeniSto(sto);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new IzmeniStoSO(sto);
+            so.ExecuteTemplate();
         }
 
         public void RezervisiSto(Sto sto)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.RezervisiSto(sto);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new RezervisiStoSO(sto);
+            so.ExecuteTemplate();
         }
         public void OslobodiSto(Sto sto)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.OslobodiSto(sto);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new OslobodiStoSO(sto);
+            so.ExecuteTemplate();
         }
         public bool DaLiJeRezervisan(Sto sto)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            bool daLiJeRezervisan = broker.DaLiJeRezervisanSto(sto);
-
-            broker.CloseConnection();
-
-            return daLiJeRezervisan; 
+            OpstaSistemskaOperacija so = new DaLiJeRezervisanStoSO(sto);
+            so.ExecuteTemplate();
+            return ((DaLiJeRezervisanStoSO)so).Rezultat;
         }
 
         
@@ -173,70 +100,39 @@ namespace ApplicationLogic
         #region Stavke Cenovnika
         public void DodajNovuStavku(StavkaCenovnika stavka)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.DodajNovuStavku(stavka);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new DodajNovuStavkuSO(stavka);
+            so.ExecuteTemplate();
         }
         public void ObrisiStavku(StavkaCenovnika stavka)
         {
-            Broker broker = new Broker();
-            broker.OpenConnection();
-
-            broker.ObrisiStaku(stavka);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new ObrisiStavkuSO(stavka);
+            so.ExecuteTemplate();
         }
         public void IzmeniStavku(StavkaCenovnika stavka)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.PromeniStavku(stavka);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new PromeniStavkuSO(stavka);
+            so.ExecuteTemplate();
         }
         public List<StavkaCenovnika> VratiSveStavke()
         {
-            Broker broker = new Broker();
 
-            broker.OpenConnection();
-
-            List<StavkaCenovnika> stavke = broker.VratiSveStavke();
-            
-            broker.CloseConnection();
-            return stavke;
-
+            OpstaSistemskaOperacija so = new VratiSveStavkeSO();
+            so.ExecuteTemplate();
+            return ((VratiSveStavkeSO)so).Rezultat;
         }
         public List<StavkaCenovnika> VratiSveStavkeIzKategorije(Kategorija k)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            List<StavkaCenovnika> stavke = broker.VratiSveStavkeIZKategorije(k);
-
-            broker.CloseConnection();
-            return stavke;
+            OpstaSistemskaOperacija so = new VratiSveStavkeIzKategorijeSO(k);
+            so.ExecuteTemplate();
+            return ((VratiSveStavkeIzKategorijeSO)so).Rezultat;
 
         }
         public List<Kategorija> VratiSveKategorije()
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            List<Kategorija> kategorije = broker.VratiSveKategorije();
-
-            broker.CloseConnection();
-            return kategorije;
-
+            OpstaSistemskaOperacija so = new VratiSveKategorijeSO();
+            so.ExecuteTemplate();
+            return ((VratiSveKategorijeSO)so).Rezultat;
         }
-
         public Array VratiSveValute()
         {
             return Enum.GetValues(typeof(Valuta));
@@ -247,124 +143,52 @@ namespace ApplicationLogic
         #region Porudzbine
         public void DodajNovuPorudzbinu(Porudzbina porudzbina)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            int idNovePorudzbine = broker.DodajNovuPorudzbinu(porudzbina);
-            porudzbina.PorudzbinaID = idNovePorudzbine; 
-            broker.CloseConnection();
-
-            broker.OpenConnection();
-
-            foreach (var narucenaStavka in porudzbina.NaruceneStavke)
-            {
-                Porucivanje porucivanje = new Porucivanje
-                {
-                    Porudzbina = porudzbina,
-                    BrojPorcija = narucenaStavka.BrojNarucenihPorcija,
-                    StavkaCenovnika = narucenaStavka.StavkaCenovnika
-                };
-                broker.DodajNovoPorucivanje(porucivanje);
-            }
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new DodajNovuPorudzbinuSO(porudzbina);
+            so.ExecuteTemplate();
         }
 
         public List<Porudzbina> VratiSvePorudzbine()
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            List<Porudzbina> svePorudzbine = broker.VratiSvePorudzbine();
-
-            foreach(var porudzbina in svePorudzbine)
-            {
-                porudzbina.NaruceneStavke = broker.VratiNaruceneStavkeIzPorudzbine(porudzbina.PorudzbinaID);
-            }
-
-            broker.CloseConnection();
-            return svePorudzbine;
+            OpstaSistemskaOperacija so = new VratiSvePorudzbineSO();
+            so.ExecuteTemplate();
+            return ((VratiSvePorudzbineSO)so).Rezultat;
         }
 
         public void ObrisiPorudzbinu(Porudzbina porudzbina)
         {
 
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.ObrisiPorucivanje(porudzbina);
-
-
-            broker.CloseConnection();
-
-            broker.OpenConnection();
-
-            broker.ObrisiPorudzbinu(porudzbina);
-
-            broker.CloseConnection();
-
-
+            OpstaSistemskaOperacija so = new ObrisiPorudzbinuSO(porudzbina);
+            so.ExecuteTemplate();
         }
 
         public void DodajBrojPorcijaStarojStavci(Porucivanje porucivanje)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.DodajBrojPorcijaStaojStavciStareStavkeUPorudzbini(porucivanje);
-
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new DodajBrojPorcijaStarojStavciSO(porucivanje);
+            so.ExecuteTemplate();
         }
 
         public void PromeniPorudzbinu(Porudzbina porudzbina)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.PromeniPorudzbinu(porudzbina);
-
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new PromeniPorudzbinuSO(porudzbina);
+            so.ExecuteTemplate();
 
         }
         public void DodajNovoPorucivanje(Porucivanje porucivanje)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.DodajNovoPorucivanje(porucivanje);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new DodajNovoPorucivanjeSO(porucivanje);
+            so.ExecuteTemplate();
         }
 
         public void ObrisiPorucivanjeZaStavku(Porucivanje porucivanje)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            broker.ObrisiPorucivanjeZaStavku(porucivanje);
-
-            broker.CloseConnection();
+            OpstaSistemskaOperacija so = new ObrisiPorucivanjeZaStavkuSO(porucivanje);
+            so.ExecuteTemplate();
         }
         public List<Porudzbina> VratiSvePorudzbineSaStola(Sto sto)
         {
-            Broker broker = new Broker();
-
-            broker.OpenConnection();
-
-            List<Porudzbina>listaPorudzina = broker.VratiSvePorudzbineSaStola(sto);
-
-            broker.CloseConnection();
-
-            return listaPorudzina;
+            OpstaSistemskaOperacija so = new VratiSvePorudzbineSaStolaSO(sto);
+            so.ExecuteTemplate();
+            return ((VratiSvePorudzbineSaStolaSO)so).Rezultat;
         }
 
         #endregion

@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Restaurant.UserControls
 {
     partial class UserControlPorudzbine
@@ -54,7 +56,7 @@ namespace Restaurant.UserControls
             this.comboBoxFilterStolovi.Name = "comboBoxFilterStolovi";
             this.comboBoxFilterStolovi.Size = new System.Drawing.Size(157, 30);
             this.comboBoxFilterStolovi.TabIndex = 46;
-            this.comboBoxFilterStolovi.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterStolovi_SelectedIndexChanged);
+           
             // 
             // buttonIzmeniPorudzbinu
             // 
@@ -65,7 +67,7 @@ namespace Restaurant.UserControls
             this.buttonIzmeniPorudzbinu.TabIndex = 45;
             this.buttonIzmeniPorudzbinu.Text = "Izmeni Izabranu Porudzbinu";
             this.buttonIzmeniPorudzbinu.UseVisualStyleBackColor = true;
-            this.buttonIzmeniPorudzbinu.Click += new System.EventHandler(this.buttonIzmeniPorudzbinu_Click);
+            
             // 
             // buttonIzbrisiPorudzbinu
             // 
@@ -76,7 +78,7 @@ namespace Restaurant.UserControls
             this.buttonIzbrisiPorudzbinu.TabIndex = 44;
             this.buttonIzbrisiPorudzbinu.Text = "Izbrisi izabranu porudzbinu";
             this.buttonIzbrisiPorudzbinu.UseVisualStyleBackColor = true;
-            this.buttonIzbrisiPorudzbinu.Click += new System.EventHandler(this.buttonIzbrisiPorudzbinu_Click);
+            
             // 
             // label3
             // 
@@ -98,7 +100,7 @@ namespace Restaurant.UserControls
             this.dataGridViewSvePorudzbine.RowTemplate.Height = 24;
             this.dataGridViewSvePorudzbine.Size = new System.Drawing.Size(862, 176);
             this.dataGridViewSvePorudzbine.TabIndex = 42;
-            this.dataGridViewSvePorudzbine.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSvePorudzbine_RowEnter);
+            
             // 
             // dataGridViewDetaljiPorudzbine
             // 
@@ -120,7 +122,7 @@ namespace Restaurant.UserControls
             this.buttonNaplati.TabIndex = 50;
             this.buttonNaplati.Text = "Naplati";
             this.buttonNaplati.UseVisualStyleBackColor = true;
-            this.buttonNaplati.Click += new System.EventHandler(this.buttonNaplati_Click);
+            
             // 
             // comboBoxStatusPorudzbine
             // 
@@ -131,7 +133,7 @@ namespace Restaurant.UserControls
             this.comboBoxStatusPorudzbine.Name = "comboBoxStatusPorudzbine";
             this.comboBoxStatusPorudzbine.Size = new System.Drawing.Size(137, 30);
             this.comboBoxStatusPorudzbine.TabIndex = 52;
-            this.comboBoxStatusPorudzbine.SelectedIndexChanged += new System.EventHandler(this.comboBoxStatusPorudzbine_SelectedIndexChanged);
+            
             // 
             // label1
             // 
@@ -152,7 +154,7 @@ namespace Restaurant.UserControls
             this.buttonFiltriraj.TabIndex = 53;
             this.buttonFiltriraj.Text = "Filter";
             this.buttonFiltriraj.UseVisualStyleBackColor = true;
-            this.buttonFiltriraj.Click += new System.EventHandler(this.buttonFiltriraj_Click);
+            
             // 
             // groupBoxfilter
             // 
@@ -201,5 +203,17 @@ namespace Restaurant.UserControls
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonFiltriraj;
         private System.Windows.Forms.GroupBox groupBoxfilter;
+
+        public ComboBox ComboBoxFilterStolovi { get => comboBoxFilterStolovi; set => comboBoxFilterStolovi = value; }
+        public Button ButtonIzmeniPorudzbinu { get => buttonIzmeniPorudzbinu; set => buttonIzmeniPorudzbinu = value; }
+        public Button ButtonIzbrisiPorudzbinu { get => buttonIzbrisiPorudzbinu; set => buttonIzbrisiPorudzbinu = value; }
+        public Label Label3 { get => label3; set => label3 = value; }
+        public DataGridView DataGridViewSvePorudzbine { get => dataGridViewSvePorudzbine; set => dataGridViewSvePorudzbine = value; }
+        public DataGridView DataGridViewDetaljiPorudzbine { get => dataGridViewDetaljiPorudzbine; set => dataGridViewDetaljiPorudzbine = value; }
+        public Button ButtonNaplati { get => buttonNaplati; set => buttonNaplati = value; }
+        public ComboBox ComboBoxStatusPorudzbine { get => comboBoxStatusPorudzbine; set => comboBoxStatusPorudzbine = value; }
+        public Label Label1 { get => label1; set => label1 = value; }
+        public Button ButtonFiltriraj { get => buttonFiltriraj; set => buttonFiltriraj = value; }
+        public GroupBox GroupBoxfilter { get => groupBoxfilter; set => groupBoxfilter = value; }
     }
 }

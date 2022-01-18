@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace Restaurant
 {
     partial class FormMain
@@ -45,7 +47,7 @@ namespace Restaurant
             this.panelRight.BackColor = System.Drawing.Color.LightPink;
             this.panelRight.Controls.Add(this.panel1);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRight.Location = new System.Drawing.Point(456, 0);
+            this.panelRight.Location = new System.Drawing.Point(474, 0);
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(335, 649);
             this.panelRight.TabIndex = 0;
@@ -117,19 +119,18 @@ namespace Restaurant
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(456, 649);
+            this.panelLeft.Size = new System.Drawing.Size(474, 649);
             this.panelLeft.TabIndex = 1;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 649);
+            this.ClientSize = new System.Drawing.Size(809, 649);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelRight);
             this.Name = "FormMain";
             this.Text = "FormMain";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.panelRight.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -145,5 +146,13 @@ namespace Restaurant
         private System.Windows.Forms.Button buttonPorudzbine;
         private System.Windows.Forms.Button buttonStavkeCenovnika;
         private System.Windows.Forms.Button buttonStolovi;
+
+        public Panel PanelRight { get => panelRight; set => panelRight = value; }
+        public Panel Panel1 { get => panel1; set => panel1 = value; }
+        public Panel PanelLeft { get => panelLeft; set => panelLeft = value; }
+        public Button ButtonPorucivanje { get => buttonPorucivanje; set => buttonPorucivanje = value; }
+        public Button ButtonPorudzbine { get => buttonPorudzbine; set => buttonPorudzbine = value; }
+        public Button ButtonStavkeCenovnika { get => buttonStavkeCenovnika; set => buttonStavkeCenovnika = value; }
+        public Button ButtonStolovi { get => buttonStolovi; set => buttonStolovi = value; }
     }
 }

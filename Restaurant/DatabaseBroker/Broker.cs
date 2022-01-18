@@ -24,7 +24,10 @@ namespace DatabaseBroker
         }
         public void CloseConnection()
         {
-            _connection.Close();
+            if (_connection != null)
+            {
+                _connection.Close();
+            }
         }
         public void BeginTransaction()
         {
@@ -45,7 +48,7 @@ namespace DatabaseBroker
         {
             List<Korisnik> korisnici = new List<Korisnik>();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM Korisnik", _connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Korisnik", _connection,_transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -71,7 +74,7 @@ namespace DatabaseBroker
         {
             List<Sto> stolovi = new List<Sto>();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM Sto", _connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Sto", _connection,_transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -94,7 +97,7 @@ namespace DatabaseBroker
             Sto s = null; 
 
             SqlCommand command = new SqlCommand("SELECT * FROM Sto WHERE " +
-                $"sto_id = {id}", _connection);
+                $"sto_id = {id}", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -116,7 +119,7 @@ namespace DatabaseBroker
         public void ObrisiSto(Sto sto)
         {
             SqlCommand command = new SqlCommand("DELETE FROM Sto WHERE " +
-                $" sto_id='{sto.StoID}'",_connection);
+                $" sto_id='{sto.StoID}'",_connection, _transaction);
 
             command.ExecuteNonQuery();
             
@@ -126,7 +129,7 @@ namespace DatabaseBroker
         {
             SqlCommand command = new SqlCommand("INSERT INTO Sto VALUES " +
                 $" ('{sto.BrojStola}','{sto.BrojStolica}'," +
-                $"'{(sto.Rezervisan ? 1:0)}')",_connection);
+                $"'{(sto.Rezervisan ? 1:0)}')",_connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -135,7 +138,7 @@ namespace DatabaseBroker
         {
             SqlCommand command = new SqlCommand("UPDATE Sto SET " +
                 $" broj_stola = '{sto.BrojStola}' , broj_stolica= '{sto.BrojStolica}'" +
-                $" WHERE sto_id = '{sto.StoID}'", _connection);
+                $" WHERE sto_id = '{sto.StoID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -145,7 +148,7 @@ namespace DatabaseBroker
 
             SqlCommand command = new SqlCommand("UPDATE Sto SET " +
                 $" rezervisan = '{1}'" +
-                $" WHERE sto_id = '{sto.StoID}'", _connection);
+                $" WHERE sto_id = '{sto.StoID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -154,7 +157,7 @@ namespace DatabaseBroker
 
             SqlCommand command = new SqlCommand("UPDATE Sto SET " +
                 $" rezervisan = '{0}'" +
-                $" WHERE sto_id = '{sto.StoID}'", _connection);
+                $" WHERE sto_id = '{sto.StoID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -163,7 +166,7 @@ namespace DatabaseBroker
         {
             bool rezervisan = false;
 
-            SqlCommand command = new SqlCommand($"SELECT rezervisan FROM Sto WHERE sto_id = {sto.StoID}", _connection);
+            SqlCommand command = new SqlCommand($"SELECT rezervisan FROM Sto WHERE sto_id = {sto.StoID}", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -180,7 +183,7 @@ namespace DatabaseBroker
             List<Sto> stolovi = new List<Sto>();
 
             SqlCommand command = new SqlCommand("SELECT * FROM Sto s JOIN Porudzbina p ON s.sto_id = p.sto_id " +
-                $" WHERE p.status_porudzbine = '{(int)status}'", _connection);
+                $" WHERE p.status_porudzbine = '{(int)status}'", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -206,14 +209,14 @@ namespace DatabaseBroker
         {
             SqlCommand command = new SqlCommand("INSERT INTO Stavka_Cenovnika VALUES " +
                 $" ('{stavka.NazivStavke}','{stavka.CenaStavkeSaPDV}'," +
-                $"'{stavka.CenaStavkeBezPDV}','{stavka.Kategorija.KategorijaID}')", _connection);
+                $"'{stavka.CenaStavkeBezPDV}','{stavka.Kategorija.KategorijaID}')", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
         public void ObrisiStaku(StavkaCenovnika stavka)
         {
             SqlCommand command = new SqlCommand("DELETE FROM Stavka_Cenovnika WHERE " +
-                $" stavka_cenovnika_id ='{stavka.StavkaID}'", _connection);
+                $" stavka_cenovnika_id ='{stavka.StavkaID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -223,7 +226,7 @@ namespace DatabaseBroker
             SqlCommand command = new SqlCommand("UPDATE Stavka_Cenovnika SET " +
                 $" naziv_stavke = '{stavka.NazivStavke}' , cena_sa_porezom= '{stavka.CenaStavkeSaPDV}' ," +
                 $"cena_bez_poreza ='{stavka.CenaStavkeBezPDV}' , kategorija_id = '{stavka.Kategorija.KategorijaID}' " +
-                $" WHERE stavka_cenovnika_id = '{stavka.StavkaID}'", _connection);
+                $" WHERE stavka_cenovnika_id = '{stavka.StavkaID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -232,7 +235,7 @@ namespace DatabaseBroker
         {
             List<StavkaCenovnika> stavke = new List<StavkaCenovnika>();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM Stavka_Cenovnika", _connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Stavka_Cenovnika", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -260,7 +263,7 @@ namespace DatabaseBroker
         {
             Kategorija k = null; 
             SqlCommand command = new SqlCommand("SELECT * FROM Kategorija WHERE " +
-                $" kategorija_id='{idKategorije}'", _connection);
+                $" kategorija_id='{idKategorije}'", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -279,7 +282,7 @@ namespace DatabaseBroker
         {
             List<Kategorija> kategorije = new List<Kategorija>();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM Kategorija ", _connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Kategorija ", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -306,7 +309,7 @@ namespace DatabaseBroker
 
 
             SqlCommand command = new SqlCommand("SELECT * FROM Stavka_Cenovnika WHERE " +
-                $" kategorija_id='{kategorija.KategorijaID}'", _connection);
+                $" kategorija_id='{kategorija.KategorijaID}'", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -334,7 +337,7 @@ namespace DatabaseBroker
         {
             StavkaCenovnika s = null;
             SqlCommand command = new SqlCommand("SELECT * FROM Stavka_Cenovnika WHERE " +
-                $" stavka_cenovnika_id ='{id}'", _connection);
+                $" stavka_cenovnika_id ='{id}'", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -392,7 +395,7 @@ namespace DatabaseBroker
         {
             List<Porudzbina> porudzbine = new List<Porudzbina>();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM Porudzbina", _connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Porudzbina", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -421,7 +424,7 @@ namespace DatabaseBroker
 
             SqlCommand command = new SqlCommand("SELECT * FROM Porucivanje p JOIN Stavka_Cenovnika sc " +
                 $" ON p.stavka_cenovnika_id = sc.stavka_cenovnika_id " +
-                $" WHERE p.porudzbina_id = {idPorudzbine}", _connection);
+                $" WHERE p.porudzbina_id = {idPorudzbine}", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -453,14 +456,14 @@ namespace DatabaseBroker
         public void ObrisiPorudzbinu(Porudzbina porudzbina)
         {
             SqlCommand command = new SqlCommand("DELETE FROM Porudzbina WHERE " +
-                $" porudzbina_id ='{porudzbina.PorudzbinaID}'", _connection);
+                $" porudzbina_id ='{porudzbina.PorudzbinaID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
         public void ObrisiPorucivanje(Porudzbina porudzbina)
         {
             SqlCommand command = new SqlCommand("DELETE FROM Porucivanje WHERE " +
-                $" porudzbina_id ='{porudzbina.PorudzbinaID}'", _connection);
+                $" porudzbina_id ='{porudzbina.PorudzbinaID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -469,7 +472,7 @@ namespace DatabaseBroker
         {
             SqlCommand command = new SqlCommand("UPDATE Porudzbina SET " +
                 $" ukupna_vrednost = '{porudzbina.UkupnaVrednost}' , status_porudzbine ='{(int)porudzbina.StatusPorudzbine}' " +
-                $" WHERE porudzbina_id = '{porudzbina.PorudzbinaID}'", _connection);
+                $" WHERE porudzbina_id = '{porudzbina.PorudzbinaID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -478,7 +481,7 @@ namespace DatabaseBroker
             SqlCommand command = new SqlCommand("UPDATE Porucivanje SET " +
                 $" broj_porcija = '{porucivanje.BrojPorcija}' " +
                 $" WHERE porudzbina_id = '{porucivanje.Porudzbina.PorudzbinaID}' AND " +
-                $" stavka_cenovnika_id ={porucivanje.StavkaCenovnika.StavkaID}", _connection);
+                $" stavka_cenovnika_id ={porucivanje.StavkaCenovnika.StavkaID}", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -487,7 +490,7 @@ namespace DatabaseBroker
         {
             SqlCommand command = new SqlCommand("DELETE FROM Porucivanje WHERE " +
                 $" porudzbina_id ='{porucivanje.Porudzbina.PorudzbinaID}' AND " +
-                $" stavka_cenovnika_id = {porucivanje.StavkaCenovnika.StavkaID}", _connection);
+                $" stavka_cenovnika_id = {porucivanje.StavkaCenovnika.StavkaID}", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
@@ -496,7 +499,7 @@ namespace DatabaseBroker
         {
             List<Porudzbina> porudzbine = new List<Porudzbina>();
 
-            SqlCommand command = new SqlCommand($"SELECT * FROM Porudzbina WHERE sto_id= {sto.StoID}", _connection);
+            SqlCommand command = new SqlCommand($"SELECT * FROM Porudzbina WHERE sto_id= {sto.StoID}", _connection, _transaction);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -524,11 +527,18 @@ namespace DatabaseBroker
         {
             SqlCommand command = new SqlCommand("UPDATE Porudzbina SET " +
                 $" sto_id = '{0}' " +
-                $" WHERE porudzbina_id = '{porudzbina.PorudzbinaID}'", _connection);
+                $" WHERE porudzbina_id = '{porudzbina.PorudzbinaID}'", _connection, _transaction);
 
             command.ExecuteNonQuery();
         }
 
         #endregion
+
+        public void Insert(IDomainObjekat obj)
+        {
+            SqlCommand command = new SqlCommand($"INSERT INTO {obj.ImeTabele} VALUES ({obj.InsertVrednosti})",_connection,_transaction);
+
+            command.ExecuteNonQuery();
+        }
     }
 }

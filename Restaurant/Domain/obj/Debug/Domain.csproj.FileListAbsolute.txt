@@ -4,3 +4,9 @@ C:\Users\MihailoM\source\repos\Restaurant\Domain\obj\Debug\Domain.csproj.Assembl
 C:\Users\MihailoM\source\repos\Restaurant\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\Users\MihailoM\source\repos\Restaurant\Domain\obj\Debug\Domain.dll
 C:\Users\MihailoM\source\repos\Restaurant\Domain\obj\Debug\Domain.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Domain\bin\Debug\Domain.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Domain\bin\Debug\Domain.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Domain\obj\Debug\Domain.csproj.AssemblyReference.cache
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Domain\obj\Debug\Domain.dll
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Domain\obj\Debug\Domain.pdb

@@ -80,6 +80,7 @@ namespace Restaurant.ServerCommunication
 
 
         }
+       
 
         #region Stolovi
         public List<Sto> VratiSveStolove()
