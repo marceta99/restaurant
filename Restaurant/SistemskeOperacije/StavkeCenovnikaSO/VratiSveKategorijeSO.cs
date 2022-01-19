@@ -12,7 +12,7 @@ namespace SistemskeOperacije.StavkeCenovnikaSO
         public List<Kategorija> Rezultat { get; set; }
         protected override void Execute()
         {
-            Rezultat = broker.VratiSveKategorije();
+            Rezultat = broker.Select(new Kategorija()).OfType<Kategorija>().ToList();
         }
     }
 }

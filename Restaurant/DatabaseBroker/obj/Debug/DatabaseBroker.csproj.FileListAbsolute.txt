@@ -14,3 +14,4 @@ C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\DatabaseBroker\obj\Debug\Data
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\DatabaseBroker\obj\Debug\DatabaseBroker.csproj.CoreCompileInputs.cache
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\DatabaseBroker\obj\Debug\DatabaseBroker.dll
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\DatabaseBroker\obj\Debug\DatabaseBroker.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\DatabaseBroker\obj\Debug\DatabaseBroker.csproj.CopyComplete

@@ -17,7 +17,7 @@ namespace SistemskeOperacije.StavkeCenovnikaSO
 
         protected override void Execute()
         {
-            broker.DodajNovuStavku(_stavka);
+            broker.Insert(_stavka);
         }
     }
 }

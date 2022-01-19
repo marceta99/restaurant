@@ -16,7 +16,11 @@ namespace SistemskeOperacije.PorudzbineOS
         }
         protected override void Execute()
         {
-            broker.DodajBrojPorcijaStaojStavciStareStavkeUPorudzbini(_porucivanje);
+            
+            _porucivanje.Set= $" broj_porcija = '{_porucivanje.BrojPorcija}'" ;
+            _porucivanje.Where = $"porudzbina_id = '{_porucivanje.Porudzbina.PorudzbinaID}' AND " +
+                $" stavka_cenovnika_id ='{_porucivanje.StavkaCenovnika.StavkaID}'";
+            broker.Update(_porucivanje);
         }
     }
 }

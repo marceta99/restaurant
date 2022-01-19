@@ -12,11 +12,26 @@ namespace SistemskeOperacije.PorudzbineOS
         public List<Porudzbina> Rezultat { get; set; }
         protected override void Execute()
         {
-            List<Porudzbina> svePorudzbine = broker.VratiSvePorudzbine();
+            Porudzbina p = new Porudzbina
+            {
+                JoinTableName="Sto",
+                JoinFirst="sto_id",
+                JoinSecond="sto_id"
+            };
+            List<Porudzbina> svePorudzbine = broker.SelectJoinWithoutWhere(p).OfType<Porudzbina>().ToList();
 
+            Porucivanje por = new Porucivanje
+            {
+                JoinTableName= "Stavka_Cenovnika",
+                JoinFirst= "stavka_cenovnika_id",
+                JoinSecond= "stavka_cenovnika_id",
+                JoinSecondTableName="Kategorija",
+                JoinJoinON= "druga.kategorija_id=treca.kategorija_id"
+            };
             foreach (var porudzbina in svePorudzbine)
             {
-                porudzbina.NaruceneStavke = broker.VratiNaruceneStavkeIzPorudzbine(porudzbina.PorudzbinaID);
+                por.Where = $"porudzbina_id = {porudzbina.PorudzbinaID}";
+                porudzbina.NaruceneStavke = broker.SelectJoinJoin(por).OfType<NarucenaStavka>().ToList();
             }
             Rezultat = svePorudzbine;
         }

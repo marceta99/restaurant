@@ -19,7 +19,14 @@ namespace SistemskeOperacije
 
         protected override void Execute()
         {
-            Rezultat = broker.VratiSveStoloveSaStatusomPorudzbine(_status);
+            Sto sto = new Sto()
+            {
+                JoinTableName = "Porudzbina",
+                JoinFirst = "sto_id",
+                JoinSecond = "sto_id",
+                Where = $"druga.status_porudzbine = '{(int)_status}'"
+            };
+            Rezultat = broker.SelectJoin(sto).OfType<Sto>().ToList();
         }
     }
 }

@@ -17,7 +17,9 @@ namespace SistemskeOperacije.PorudzbineOS
 
         protected override void Execute()
         {
-            broker.PromeniPorudzbinu(_porudzbina);
+            _porudzbina.Set = $" ukupna_vrednost = '{_porudzbina.UkupnaVrednost}' , status_porudzbine ='{(int)_porudzbina.StatusPorudzbine}' ";
+            _porudzbina.Where = $"porudzbina_id = '{_porudzbina.PorudzbinaID}'";
+            broker.Update(_porudzbina);
         }
     }
 }

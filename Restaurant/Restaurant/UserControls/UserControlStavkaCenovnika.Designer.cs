@@ -48,10 +48,10 @@ namespace Restaurant.UserControls
             this.label8 = new System.Windows.Forms.Label();
             this.buttonSacuvajIzmene = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxProcenatPDV = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxFilterKategorije = new System.Windows.Forms.ComboBox();
-            this.textBoxProcenatPDV = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStavke)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +65,6 @@ namespace Restaurant.UserControls
             this.buttonIzmeniStavku.TabIndex = 25;
             this.buttonIzmeniStavku.Text = "Izmeni Izabranu Stavku";
             this.buttonIzmeniStavku.UseVisualStyleBackColor = true;
-            
             // 
             // buttonIzbrisiStavku
             // 
@@ -76,7 +75,6 @@ namespace Restaurant.UserControls
             this.buttonIzbrisiStavku.TabIndex = 24;
             this.buttonIzbrisiStavku.Text = "Izbrisi izabranu stavku";
             this.buttonIzbrisiStavku.UseVisualStyleBackColor = true;
-            
             // 
             // buttonDodajStavku
             // 
@@ -87,7 +85,6 @@ namespace Restaurant.UserControls
             this.buttonDodajStavku.TabIndex = 23;
             this.buttonDodajStavku.Text = "Dodaj novu stavku";
             this.buttonDodajStavku.UseVisualStyleBackColor = true;
-            
             // 
             // label3
             // 
@@ -214,7 +211,6 @@ namespace Restaurant.UserControls
             this.buttonSacuvajIzmene.TabIndex = 40;
             this.buttonSacuvajIzmene.Text = "Sacuvaj Izmene";
             this.buttonSacuvajIzmene.UseVisualStyleBackColor = true;
-            
             // 
             // groupBox1
             // 
@@ -239,7 +235,24 @@ namespace Restaurant.UserControls
             this.groupBox1.Size = new System.Drawing.Size(437, 406);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(278, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 29);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "%";
+            // 
+            // textBoxProcenatPDV
+            // 
+            this.textBoxProcenatPDV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxProcenatPDV.Location = new System.Drawing.Point(181, 111);
+            this.textBoxProcenatPDV.Name = "textBoxProcenatPDV";
+            this.textBoxProcenatPDV.Size = new System.Drawing.Size(91, 28);
+            this.textBoxProcenatPDV.TabIndex = 43;
             // 
             // label4
             // 
@@ -260,26 +273,6 @@ namespace Restaurant.UserControls
             this.comboBoxFilterKategorije.Name = "comboBoxFilterKategorije";
             this.comboBoxFilterKategorije.Size = new System.Drawing.Size(179, 30);
             this.comboBoxFilterKategorije.TabIndex = 41;
-            
-            // 
-            // textBoxProcenatPDV
-            // 
-            this.textBoxProcenatPDV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxProcenatPDV.Location = new System.Drawing.Point(181, 111);
-            this.textBoxProcenatPDV.Name = "textBoxProcenatPDV";
-            this.textBoxProcenatPDV.Size = new System.Drawing.Size(91, 28);
-            this.textBoxProcenatPDV.TabIndex = 43;
-            
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(278, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 29);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "%";
             // 
             // UserControlStavkaCenovnika
             // 

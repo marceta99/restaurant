@@ -17,7 +17,8 @@ namespace SistemskeOperacije
 
         protected override void Execute()
         {
-            broker.ObrisiSto(_sto);
+            _sto.Where = $" sto_id = '{_sto.StoID}'";
+            broker.Delete(_sto);
         }
     }
 }

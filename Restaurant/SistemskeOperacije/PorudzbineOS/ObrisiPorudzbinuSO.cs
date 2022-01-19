@@ -16,8 +16,14 @@ namespace SistemskeOperacije.PorudzbineOS
         }
         protected override void Execute()
         {
-            broker.ObrisiPorucivanje(_porudzbina);
-            broker.ObrisiPorudzbinu(_porudzbina);
+            Porucivanje porucivanje = new Porucivanje
+            {
+                Where = $" porudzbina_id ='{_porudzbina.PorudzbinaID}'"
+            };
+            broker.Delete(porucivanje);
+            _porudzbina.Where = $" porudzbina_id ='{_porudzbina.PorudzbinaID}'";
+            broker.Delete(_porudzbina);
+            
         }
     }
 }

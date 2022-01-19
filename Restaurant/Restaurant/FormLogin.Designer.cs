@@ -31,6 +31,7 @@ namespace Restaurant
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.buttonLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxKorisnickoIme = new System.Windows.Forms.TextBox();
@@ -41,19 +42,18 @@ namespace Restaurant
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(195, 300);
+            this.buttonLogin.Location = new System.Drawing.Point(202, 301);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(115, 47);
             this.buttonLogin.TabIndex = 0;
             this.buttonLogin.Text = "login";
             this.buttonLogin.UseVisualStyleBackColor = true;
-            
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(180, 115);
+            this.label1.Location = new System.Drawing.Point(187, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 25);
             this.label1.TabIndex = 1;
@@ -62,7 +62,7 @@ namespace Restaurant
             // textBoxKorisnickoIme
             // 
             this.textBoxKorisnickoIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxKorisnickoIme.Location = new System.Drawing.Point(154, 154);
+            this.textBoxKorisnickoIme.Location = new System.Drawing.Point(161, 155);
             this.textBoxKorisnickoIme.Name = "textBoxKorisnickoIme";
             this.textBoxKorisnickoIme.Size = new System.Drawing.Size(193, 34);
             this.textBoxKorisnickoIme.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace Restaurant
             // textBoxSifra
             // 
             this.textBoxSifra.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSifra.Location = new System.Drawing.Point(154, 235);
+            this.textBoxSifra.Location = new System.Drawing.Point(161, 236);
             this.textBoxSifra.Name = "textBoxSifra";
             this.textBoxSifra.PasswordChar = '*';
             this.textBoxSifra.Size = new System.Drawing.Size(193, 34);
@@ -88,7 +88,7 @@ namespace Restaurant
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(225, 202);
+            this.label3.Location = new System.Drawing.Point(232, 203);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 25);
             this.label3.TabIndex = 5;
@@ -98,7 +98,9 @@ namespace Restaurant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 503);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(573, 505);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxSifra);
             this.Controls.Add(this.label2);

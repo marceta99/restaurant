@@ -17,7 +17,7 @@ namespace SistemskeOperacije.PorudzbineOS
 
         protected override void Execute()
         {
-            broker.DodajNovoPorucivanje(_porucivanje);
+            broker.Insert(_porucivanje);
         }
     }
 }

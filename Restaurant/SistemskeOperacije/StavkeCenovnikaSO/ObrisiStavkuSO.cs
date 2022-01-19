@@ -17,7 +17,8 @@ namespace SistemskeOperacije.StavkeCenovnikaSO
 
         protected override void Execute()
         {
-            broker.ObrisiStaku(_stavka);
+            _stavka.Where = $" stavka_cenovnika_id ='{_stavka.StavkaID}'";
+            broker.Delete(_stavka);
         }
     }
 }

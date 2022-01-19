@@ -18,7 +18,15 @@ namespace SistemskeOperacije.StavkeCenovnikaSO
         }
         protected override void Execute()
         {
-            Rezultat = broker.VratiSveStavkeIZKategorije(_kategorija);
+            
+            StavkaCenovnika stavka = new StavkaCenovnika
+            {
+                Where = $"prva.kategorija_id='{_kategorija.KategorijaID}'",
+                JoinTableName="Kategorija",
+                JoinFirst= "kategorija_id",
+                JoinSecond= "kategorija_id"
+            };
+            Rezultat = broker.SelectJoin(stavka).OfType<StavkaCenovnika>().ToList();
         }
     }
 }

@@ -41,4 +41,3 @@ C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Restaurant\obj\Debug\Restaura
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.CoreCompileInputs.cache
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Restaurant\obj\Debug\Restaurant.exe
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Restaurant\obj\Debug\Restaurant.pdb
-C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.CopyComplete

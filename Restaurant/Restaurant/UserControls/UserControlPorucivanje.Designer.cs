@@ -70,7 +70,6 @@ namespace Restaurant.UserControls
             this.groupBox1.Size = new System.Drawing.Size(487, 313);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // comboBoxBrojPorcija
             // 
@@ -161,7 +160,6 @@ namespace Restaurant.UserControls
             this.buttonDodajStavkuUPorudzbinu.TabIndex = 23;
             this.buttonDodajStavkuUPorudzbinu.Text = "Dodaj novu stavku u porudzbinu";
             this.buttonDodajStavkuUPorudzbinu.UseVisualStyleBackColor = true;
-            
             // 
             // buttonSacuvajPorudzbinu
             // 
@@ -173,7 +171,6 @@ namespace Restaurant.UserControls
             this.buttonSacuvajPorudzbinu.TabIndex = 40;
             this.buttonSacuvajPorudzbinu.Text = "Sacuvaj Porudzbinu";
             this.buttonSacuvajPorudzbinu.UseVisualStyleBackColor = true;
-            
             // 
             // buttonIzbrisiIzabranuStavku
             // 
@@ -184,7 +181,6 @@ namespace Restaurant.UserControls
             this.buttonIzbrisiIzabranuStavku.TabIndex = 44;
             this.buttonIzbrisiIzabranuStavku.Text = "Izbrisi izabranu stavku";
             this.buttonIzbrisiIzabranuStavku.UseVisualStyleBackColor = true;
-            
             // 
             // dataGridViewStavkeUPorudzbini
             // 
@@ -247,7 +243,6 @@ namespace Restaurant.UserControls
             this.button1.TabIndex = 52;
             this.button1.Text = "Smanji Broj Porcija";
             this.button1.UseVisualStyleBackColor = true;
-            
             // 
             // UserControlPorucivanje
             // 

@@ -24,5 +24,7 @@ namespace Restaurant
             _controllerNaplacivanje = new ControllerNaplacivanje(this);
             _controllerNaplacivanje.initData(porudzbina);
         }
+
+        
     }
 }

@@ -17,7 +17,9 @@ namespace SistemskeOperacije.StoSO
 
         protected override void Execute()
         {
-            broker.RezervisiSto(_sto);
+            _sto.Set = $" rezervisan = '{1}'";
+            _sto.Where = $" sto_id = '{_sto.StoID}'";
+            broker.Update(_sto);
         }
     }
 }

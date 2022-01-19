@@ -18,7 +18,10 @@ namespace SistemskeOperacije.StoSO
 
         protected override void Execute()
         {
-            Rezultat = broker.DaLiJeRezervisanSto(_sto); ;
+            //Rezultat = broker.DaLiJeRezervisanSto(_sto); ;
+            _sto.Where = $"sto_id = '{_sto.StoID}'";
+            List<Sto>sto = broker.SelectWhere(_sto).OfType<Sto>().ToList();
+            Rezultat = sto[0].Rezervisan; 
         }
     }
 }

@@ -16,7 +16,7 @@ namespace SistemskeOperacije.PorudzbineOS
         }
         protected override void Execute()
         {
-            int idNovePorudzbine = broker.DodajNovuPorudzbinu(_porudzbina);
+            int idNovePorudzbine = broker.Insert(_porudzbina);
             _porudzbina.PorudzbinaID = idNovePorudzbine;
 
             foreach (var narucenaStavka in _porudzbina.NaruceneStavke)
@@ -27,7 +27,7 @@ namespace SistemskeOperacije.PorudzbineOS
                     BrojPorcija = narucenaStavka.BrojNarucenihPorcija,
                     StavkaCenovnika = narucenaStavka.StavkaCenovnika
                 };
-                broker.DodajNovoPorucivanje(porucivanje);
+                broker.Insert(porucivanje);
             }
         }
     }

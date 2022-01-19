@@ -14,7 +14,6 @@ namespace SistemskeOperacije
         {
             _sto = sto; 
         }
-
         protected override void Execute()
         {
             broker.Insert(_sto);

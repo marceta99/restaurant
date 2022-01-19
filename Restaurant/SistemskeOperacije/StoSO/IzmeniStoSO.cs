@@ -17,7 +17,9 @@ namespace SistemskeOperacije.StoSO
 
         protected override void Execute()
         {
-            broker.IzmeniSto(_sto);
+            _sto.Set = $" broj_stola ='{_sto.BrojStola}' , broj_stolica='{_sto.BrojStolica}'";
+            _sto.Where = $" sto_id = '{_sto.StoID}'";
+            broker.Update(_sto);
         }
     }
 }

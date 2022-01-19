@@ -16,7 +16,11 @@ namespace SistemskeOperacije.StavkeCenovnikaSO
         }
         protected override void Execute()
         {
-            broker.PromeniStavku(_stavka);
+            
+            _stavka.Set = $" naziv_stavke = '{_stavka.NazivStavke}' , cena_sa_porezom= '{_stavka.CenaStavkeSaPDV}' ," +
+                $" cena_bez_poreza ='{_stavka.CenaStavkeBezPDV}' , kategorija_id = '{_stavka.Kategorija.KategorijaID}'";
+            _stavka.Where = $" stavka_cenovnika_id = '{_stavka.StavkaID}'";
+            broker.Update(_stavka);
         }
     }
 }

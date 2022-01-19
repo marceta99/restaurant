@@ -37,10 +37,10 @@ namespace Restaurant
             this.labelDatum = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelDatumPor = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelDatumPor = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@ namespace Restaurant
             this.buttonNaplaceno.TabIndex = 0;
             this.buttonNaplaceno.Text = "Naplaćeno";
             this.buttonNaplaceno.UseVisualStyleBackColor = true;
-            
+   
             // 
             // label1
             // 
@@ -104,25 +104,15 @@ namespace Restaurant
             this.panel1.Size = new System.Drawing.Size(1113, 604);
             this.panel1.TabIndex = 4;
             // 
-            // labelDatumPor
+            // label5
             // 
-            this.labelDatumPor.AutoSize = true;
-            this.labelDatumPor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDatumPor.Location = new System.Drawing.Point(431, 196);
-            this.labelDatumPor.Name = "labelDatumPor";
-            this.labelDatumPor.Size = new System.Drawing.Size(116, 25);
-            this.labelDatumPor.TabIndex = 4;
-            this.labelDatumPor.Text = "labelaDatun";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(181, 104);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 29);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Ukupno za plaćanje :";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(205, 193);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(211, 29);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Datum poručivanja";
             // 
             // label4
             // 
@@ -134,15 +124,25 @@ namespace Restaurant
             this.label4.TabIndex = 6;
             this.label4.Text = "Broj stola :";
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(205, 193);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(211, 29);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Datum poručivanja";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(181, 104);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(235, 29);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Ukupno za plaćanje :";
+            // 
+            // labelDatumPor
+            // 
+            this.labelDatumPor.AutoSize = true;
+            this.labelDatumPor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDatumPor.Location = new System.Drawing.Point(431, 196);
+            this.labelDatumPor.Name = "labelDatumPor";
+            this.labelDatumPor.Size = new System.Drawing.Size(116, 25);
+            this.labelDatumPor.TabIndex = 4;
+            this.labelDatumPor.Text = "labelaDatun";
             // 
             // FormNaplacivanje
             // 

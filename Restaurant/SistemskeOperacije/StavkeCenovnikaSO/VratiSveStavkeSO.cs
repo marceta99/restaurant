@@ -13,7 +13,11 @@ namespace SistemskeOperacije.StavkeCenovnikaSO
 
         protected override void Execute()
         {
-            Rezultat = broker.VratiSveStavke();
+            StavkaCenovnika stavka = new StavkaCenovnika();
+            stavka.JoinTableName = "Kategorija";
+            stavka.JoinFirst = "kategorija_id";
+            stavka.JoinSecond = "kategorija_id";
+            Rezultat = broker.SelectJoinWithoutWhere(stavka).OfType<StavkaCenovnika>().ToList();
         }
     }
 }

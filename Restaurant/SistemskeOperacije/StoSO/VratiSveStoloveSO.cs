@@ -12,7 +12,7 @@ namespace SistemskeOperacije
         public List<Sto> Rezultat{ get;private set; }
         protected override void Execute()
         {
-            Rezultat = broker.VratiSveStolove();
+            Rezultat = broker.Select(new Sto()).OfType<Sto>().ToList();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace SistemskeOperacije.LoginSO
         protected override void Execute()
         {
 
-            List<Korisnik> korisnici = broker.VratiSveKorisnike();
+            List<Korisnik> korisnici = broker.Select(new Korisnik()).OfType<Korisnik>().ToList();
             Rezultat = null;
             foreach (var korisnik in korisnici)
             {
