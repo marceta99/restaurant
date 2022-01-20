@@ -24,6 +24,7 @@ namespace SistemskeOperacije
             }catch(Exception ex)
             {
                 broker.RollBack();
+                throw ex;
             }
             finally
             {

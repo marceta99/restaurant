@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Restaurant.Exceptions;
 using Restaurant.ServerCommunication;
 using Restaurant.UserControls;
 using System;
@@ -60,6 +61,7 @@ namespace Restaurant.GuiControllers
 
             RefresujVrednostiUdataGridView();
             RefresujMoguceVrednostiZaBrojStola();
+            MessageBox.Show("Uspešno izmenjen sto");
         }
         private void buttonIzmeniSto_Click(object sender, EventArgs e)
         {
@@ -87,6 +89,8 @@ namespace Restaurant.GuiControllers
 
             userControlStolovi.ComboBoxIzmenjeniBrojeviStola.SelectedItem = sto.BrojStola;
             userControlStolovi.ComboBoxIzmenjeniBrojeviStolica.SelectedItem = sto.BrojStolica;
+            
+
         }
         private void buttonIzbrisiSto_Click(object sender, EventArgs e)
         {
@@ -106,9 +110,9 @@ namespace Restaurant.GuiControllers
             {
                 Communication.Instance.IzbrisiSto(sto);
             }
-            catch (Exception ex)
+            catch (SystemOperationException ex)
             {
-                MessageBox.Show("Vec su ranije pravljenje porudzbine nad ovim stolom tako da ga ne mozete obrisati");
+                MessageBox.Show("Izabrani sto ne može da se obriše");
                 return;
             }
             MessageBox.Show("Obrisali ste sto");
@@ -141,7 +145,7 @@ namespace Restaurant.GuiControllers
 
             };
             Communication.Instance.DodajNoviSto(noviSto);
-
+            MessageBox.Show("Uspešno dodat novi sto");
             RefresujVrednostiUdataGridView();
             RefresujMoguceVrednostiZaBrojStola();
 

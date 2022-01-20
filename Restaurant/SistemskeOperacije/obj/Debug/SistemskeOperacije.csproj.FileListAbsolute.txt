@@ -8,4 +8,3 @@ C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\bin\Debug\
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\bin\Debug\Domain.pdb
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\obj\Debug\SistemskeOperacije.dll
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\obj\Debug\SistemskeOperacije.pdb
-C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\SistemskeOperacije\obj\Debug\SistemskeOperacije.csproj.CopyComplete

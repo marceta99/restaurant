@@ -83,9 +83,6 @@ namespace Restaurant.GuiControllers
             userControlStavkaCenovnika.TextBoxNazivStavke.Text = "";
             userControlStavkaCenovnika.TextBoxCenaSaPDV.Text = "";
             userControlStavkaCenovnika.TextBoxCenaBezPDV.Text = "";
-
-            userControlStavkaCenovnika.ButtonDodajStavku.Enabled = !(userControlStavkaCenovnika.ButtonDodajStavku.Enabled);
-            userControlStavkaCenovnika.ButtonSacuvajIzmene.Enabled = !(userControlStavkaCenovnika.ButtonSacuvajIzmene.Enabled);
         }
         private void RefresujVrednostiUdataGridView()
         {
@@ -160,6 +157,8 @@ namespace Restaurant.GuiControllers
 
             RefresujVrednostiUdataGridView();
             RefresujInputeIDugmice();
+            userControlStavkaCenovnika.ButtonDodajStavku.Enabled = true;
+            userControlStavkaCenovnika.ButtonSacuvajIzmene.Enabled = false; 
             MessageBox.Show("Uspesno ste promenili stavku");
 
 
@@ -167,12 +166,6 @@ namespace Restaurant.GuiControllers
         }
         private void comboBoxFilterKategorije_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*if (_prviLoad == 1)
-            {
-                _prviLoad++;
-                return;
-            }*/
-
             Kategorija k = (Kategorija)userControlStavkaCenovnika.ComboBoxFilterKategorije.SelectedItem;
             _stavkeIzKategorije = new BindingList<StavkaCenovnika>(Communication.Instance.VratiSveStavkeIzKategorije(k));
 
@@ -188,12 +181,6 @@ namespace Restaurant.GuiControllers
 
             string naziv = userControlStavkaCenovnika.TextBoxNazivStavke.Text;
 
-            /*if (!(dobraCenaBezPdva && dobarPdv))
-            {
-
-                MessageBox.Show("Niste pravilno uneli cenu bez pdv-a ili procenat pdv-a");
-                return;
-            }*/
             cenaSaPDV = cenaBezPdv + ((cenaBezPdv / 100) * procenatPDV);
             userControlStavkaCenovnika.TextBoxCenaSaPDV.Text = cenaSaPDV.ToString();
         }
