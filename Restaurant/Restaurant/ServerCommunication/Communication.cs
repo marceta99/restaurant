@@ -49,18 +49,14 @@ namespace Restaurant.ServerCommunication
             {
                 throw new ServerCommunicationException();
             }
-            //CommunicationHelper helper = new CommunicationHelper(_socket); da iskorisitm ovaj helper za slanje requesta 
+            
             _stream = new NetworkStream(_socket); //i primanje responsa svugde dole gde imam serijilizaciju i desesrilizaicu
             _formatter = new BinaryFormatter(); //i i sto taj helper da iskoristim i kod servera za isto to
 
         }
         public void CloseConnection()
         {
-            Request request = new Request()
-            {
-                Operation = Operation.KrajKlijenta
-            };
-            _formatter.Serialize(_stream, request);
+            SendRequest(Operation.KrajKlijenta);
             _socket.Shutdown(SocketShutdown.Both);
             _socket.Dispose();
 
@@ -92,8 +88,8 @@ namespace Restaurant.ServerCommunication
             }
             else
             {
-                throw new Exception();
-                //throw new SystemOperationException(response.Message);
+                
+                throw new SystemOperationException(response.Message);
             }
         }
         private void GetResponseNoReturn()
@@ -101,7 +97,7 @@ namespace Restaurant.ServerCommunication
             Response response = (Response)_formatter.Deserialize(_stream);
             if (!response.IsSuccesfull)
             {
-                //throw new SystemOperationException(response.Message);
+               throw new SystemOperationException(response.Message);
             }
 
         }
