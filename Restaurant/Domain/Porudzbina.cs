@@ -25,7 +25,7 @@ namespace Domain
 
         public string ImeTabele => "Porudzbina";
 
-        public string InsertVrednosti => $"'{UkupnaVrednost}','{Datum.ToString("yyyy-MM-dd HH:mm:ss")}','{Sto.StoID}','{StatusPorudzbine.Kreirana}'";
+        public string InsertVrednosti => $"'{UkupnaVrednost}','{Datum.ToString("yyyy-MM-dd HH:mm:ss")}','{Sto.StoID}','{(int)StatusPorudzbine.Kreirana}'";
 
         public string Id => "porudzbina_id";
 

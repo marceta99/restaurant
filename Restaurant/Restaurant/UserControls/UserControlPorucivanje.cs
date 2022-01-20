@@ -1,5 +1,6 @@
 ﻿
 using Domain;
+using Restaurant.Exceptions;
 using Restaurant.GuiControllers;
 using Restaurant.ServerCommunication;
 using System;
@@ -16,17 +17,20 @@ namespace Restaurant.UserControls
 {
     public partial class UserControlPorucivanje : UserControl
     {
-        private List<Sto> _stolovi;
-        private Porudzbina _novaPorudzbina;
-        private BindingList<NarucenaStavka> _naruceneStavke;
-        private int _prvaNarudzbina = 1;
-
         private ControllerPorucivanje _controllerPorucivanje;
         public UserControlPorucivanje()
         {
-            InitializeComponent();
+             InitializeComponent();
             _controllerPorucivanje = new ControllerPorucivanje(this);
-            _controllerPorucivanje.initData();
+            try
+            {
+                _controllerPorucivanje.initData();
+
+            }catch(ServerCommunicationException ex)
+            {
+                throw ex;
+                
+            }
         }
     }
 }

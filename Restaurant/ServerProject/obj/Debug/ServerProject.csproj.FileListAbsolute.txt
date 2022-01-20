@@ -34,6 +34,6 @@ C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ServerProject\obj\Debug\Serve
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ServerProject\obj\Debug\ServerProject.csproj.CoreCompileInputs.cache
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ServerProject\obj\Debug\ServerProject.exe
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ServerProject\obj\Debug\ServerProject.pdb
-C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ServerProject\obj\Debug\ServerProject.csproj.CopyComplete
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ServerProject\bin\Debug\SistemskeOperacije.dll
 C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ServerProject\bin\Debug\SistemskeOperacije.pdb
+C:\Users\MihailoM\Desktop\RestaurantApp\Restaurant\ServerProject\obj\Debug\ServerProject.csproj.CopyComplete

@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Restaurant.Exceptions;
 using Restaurant.ServerCommunication;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace Restaurant.GuiControllers
 
         internal void initData()
         {
-            formLogin.ButtonLogin.Click += buttonLogin_Click;
+             formLogin.ButtonLogin.Click += buttonLogin_Click;
         }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -42,7 +43,15 @@ namespace Restaurant.GuiControllers
             };
             if (!_loginFailed)
             {
-                Communication.Instance.Connect();
+                try
+                {
+                    Communication.Instance.Connect();
+
+                }catch(ServerCommunicationException ex)
+                {
+                    MessageBox.Show("Greska sa serverom, probajte da se ulogujete malo kasnije");
+                    return;
+                }
             }
             Korisnik korisnik = Communication.Instance.Login(noviKorisnik);
             Session.Instance.TrenutniKorisnik = korisnik;

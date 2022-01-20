@@ -32,6 +32,7 @@ namespace ServerProject
 
                 Thread nit1 = new Thread(_server.Listen);
                 nit1.Start();
+                nit1.IsBackground = true;
                 buttonPokreniServer.Enabled = false;
                 buttonZaustaviServer.Enabled = true;
             

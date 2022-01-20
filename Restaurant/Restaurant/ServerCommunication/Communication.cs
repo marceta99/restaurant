@@ -1,7 +1,9 @@
 ﻿using Common;
 using Domain;
+using Restaurant.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -39,7 +41,14 @@ namespace Restaurant.ServerCommunication
         public void Connect()
         {
             _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _socket.Connect("127.0.0.1", 9000);
+            try
+            {
+                _socket.Connect("127.0.0.1", 9000);
+            }
+            catch (SocketException ex)
+            {
+                throw new ServerCommunicationException();
+            }
             //CommunicationHelper helper = new CommunicationHelper(_socket); da iskorisitm ovaj helper za slanje requesta 
             _stream = new NetworkStream(_socket); //i primanje responsa svugde dole gde imam serijilizaciju i desesrilizaicu
             _formatter = new BinaryFormatter(); //i i sto taj helper da iskoristim i kod servera za isto to
@@ -58,176 +67,103 @@ namespace Restaurant.ServerCommunication
 
         }
 
+        private void SendRequest(Operation operation, object requestObject = null)
+        {
+            try
+            {
+                Request request = new Request
+                {
+                    Operation = operation,
+                    RequestObject = requestObject
+                };
+                _formatter.Serialize(_stream, request);
+            }
+            catch (IOException ex)
+            {
+                throw new ServerCommunicationException();
+            }
+        }
+        private T GetResponse<T>()
+        {   
+            Response response = (Response)_formatter.Deserialize(_stream);
+            if (response.IsSuccesfull)
+            {
+                return (T)response.ResponseObject;
+            }
+            else
+            {
+                throw new Exception();
+                //throw new SystemOperationException(response.Message);
+            }
+        }
+        private void GetResponseNoReturn()
+        {
+            Response response = (Response)_formatter.Deserialize(_stream);
+            if (!response.IsSuccesfull)
+            {
+                //throw new SystemOperationException(response.Message);
+            }
+
+        }
+
 
 
         public Korisnik Login(Korisnik korisnik)
         {
-            Request r = new Request
-            {
-                Operation = Operation.Login, 
-                RequestObject = korisnik 
-            };
-            _formatter.Serialize(_stream, r);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (Korisnik)response.ResponseObject;
-            }else
-            {
-                throw new Exception("Greska pri logovanju");
-            }
-
-
+            SendRequest(Operation.Login, korisnik);
+            return GetResponse<Korisnik>();
         }
        
 
         #region Stolovi
         public List<Sto> VratiSveStolove()
         {
-            Request request = new Request
-            {
-                Operation = Operation.VratiSveStolove
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (List<Sto>)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri vraćanju stolova");
-            }
+            SendRequest(Operation.VratiSveStolove);
+            return GetResponse<List<Sto>>();
         }
 
         public List<Sto> VratiSveStoloveSaStatusomPorudzbine(StatusPorudzbine status)
         {
-            Request request = new Request
-            {
-                Operation = Operation.VratiSveStoloveSaStatusomPorudzbine,
-                RequestObject = status
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (List<Sto>)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri vraćanju stolova");
-            }
+            SendRequest(Operation.VratiSveStoloveSaStatusomPorudzbine,status);
+            return GetResponse<List<Sto>>();
         }
 
         public void DodajNoviSto(Sto noviSto)
         {
-            
-                Request request = new Request
-                {
-                    Operation = Operation.DodajNoviSto,
-                    RequestObject = noviSto
-                };
-                _formatter.Serialize(_stream, request);
-
-                Response response = (Response)_formatter.Deserialize(_stream);
-                if (!response.IsSuccesfull)
-                {
-                    throw new Exception("Greska pri dodavanju stolova");
-                }
+                SendRequest(Operation.DodajNoviSto, noviSto);
+                GetResponseNoReturn();
             
         }
 
         public void IzbrisiSto(Sto sto)
         {
-            {
-                Request request = new Request
-                {
-                    Operation = Operation.IzbrisiSto,
-                    RequestObject = sto
-                };
-                _formatter.Serialize(_stream, request);
-
-                Response response = (Response)_formatter.Deserialize(_stream);
-                if (!response.IsSuccesfull)
-                {
-                    throw new Exception("Greska pri brisanju stolova");
-                }
-            }
+            SendRequest(Operation.IzbrisiSto, sto);
+            GetResponseNoReturn();
         }
 
         public void IzmeniSto(Sto sto)
         {
-            {
-                Request request = new Request
-                {
-                    Operation = Operation.IzmeniSto,
-                    RequestObject = sto
-                };
-                _formatter.Serialize(_stream, request);
-
-                Response response = (Response)_formatter.Deserialize(_stream);
-                if (!response.IsSuccesfull)
-                {
-                    throw new Exception("Greska pri izmeni stolova");
-                }
-            }
+            SendRequest(Operation.IzmeniSto, sto);
+            GetResponseNoReturn();
         }
 
         public bool DaLiJeRezervisan(Sto sto)
         {
-            Request request = new Request
-            {
-                Operation = Operation.DaLiJeRezervisanSto,
-                RequestObject = sto
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (bool)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri operaciji provere");
-            }
+            
+            SendRequest(Operation.DaLiJeRezervisanSto, sto);
+            return GetResponse<bool>();
         }
 
         public void RezervisiSto(Sto sto)
         {
-            
-            Request request = new Request
-            {
-                Operation = Operation.RezervisiSto,
-                RequestObject = sto
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (!response.IsSuccesfull)
-            {
-                throw new Exception("Greska pri rezervaciji stolova");
-            }
-            
+            SendRequest(Operation.RezervisiSto, sto);
+            GetResponseNoReturn();   
         }
 
         public void OslobodiSto(Sto sto)
         {
-            Request request = new Request
-            {
-                Operation = Operation.OslobodiSto,
-                RequestObject = sto
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (!response.IsSuccesfull)
-            {
-                throw new Exception("Greska pri oslobadjanju stola");
-            }
+            SendRequest(Operation.OslobodiSto, sto);
+            GetResponseNoReturn();
         }
         #endregion
 
@@ -235,134 +171,54 @@ namespace Restaurant.ServerCommunication
 
         public List<StavkaCenovnika> VratiSveStavke()
         {
-            Request request = new Request
-            {
-                Operation = Operation.VratiSveStavke
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (List<StavkaCenovnika>)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri vraćanju stavki cenovnika");
-            }
+            SendRequest(Operation.VratiSveStavke);
+            return GetResponse<List<StavkaCenovnika>>();
         }
 
         public List<StavkaCenovnika> VratiSveStavkeIzKategorije(Kategorija k)
         {
-            Request request = new Request
-            {
-                Operation = Operation.VratiSveStavkeIzKategorije,
-                RequestObject = k
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (List<StavkaCenovnika>)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri vraćanju stavki cenovnika");
-            }
+            
+            SendRequest(Operation.VratiSveStavkeIzKategorije,k);
+            return GetResponse<List<StavkaCenovnika>>();
         }
 
 
         public Array VratiSveValute()
         {
-            Request request = new Request
-            {
-                Operation = Operation.VratiSveValute
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (Array)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri vraćanju valuta");
-            }
+            
+            SendRequest(Operation.VratiSveValute);
+            return GetResponse<Array>();
+           
         }
 
         public List<Kategorija> VratiSveKategorije()
         {
-            Request request = new Request
-            {
-                Operation = Operation.VratiSveKategorije
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (List<Kategorija>)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri vraćanju stavki cenovnika");
-            }
+            
+            SendRequest(Operation.VratiSveKategorije);
+            return GetResponse<List<Kategorija>>();
+            
         }
 
         public void DodajNovuStavku(StavkaCenovnika stavka)
         {
-            
-                Request request = new Request
-                {
-                    Operation = Operation.DodajNovuStavku,
-                    RequestObject = stavka
-                };
-                _formatter.Serialize(_stream, request);
-
-                Response response = (Response)_formatter.Deserialize(_stream);
-                if (!response.IsSuccesfull)
-                {
-                    throw new Exception("Greska pri dodavanju stavke");
-                }
+            SendRequest(Operation.DodajNovuStavku, stavka);
+            GetResponseNoReturn();
+                
             
         }
 
         public void ObrisiStavku(StavkaCenovnika stavka)
         {
-            {
-                Request request = new Request
-                {
-                    Operation = Operation.ObrisiStavku,
-                    RequestObject = stavka
-                };
-                _formatter.Serialize(_stream, request);
-
-                Response response = (Response)_formatter.Deserialize(_stream);
-                if (!response.IsSuccesfull)
-                {
-                    throw new Exception("Greska pri brisanju stavke");
-                }
-            }
+            SendRequest(Operation.ObrisiStavku, stavka);
+            GetResponseNoReturn();
         }
 
         public void IzmeniStavku(StavkaCenovnika stavka)
         {
-            
-            Request request = new Request
-            {
-                Operation = Operation.IzmeniStavku,
-                RequestObject = stavka
-            };
-            _formatter.Serialize(_stream, request);
 
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (!response.IsSuccesfull)
-            {
-                throw new Exception("Greska pri izmeni stavki");
-            }
-            
+            SendRequest(Operation.IzmeniStavku, stavka);
+            GetResponseNoReturn();
+
         }
 
 
@@ -372,143 +228,57 @@ namespace Restaurant.ServerCommunication
 
         public void DodajNovuPorudzbinu(Porudzbina porudzbina)
         {
-            Request request = new Request
-            {
-                Operation = Operation.DodajNovuPorudzbinu,
-                RequestObject = porudzbina
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (!response.IsSuccesfull)
-            {
-                throw new Exception("Greska pri dodavanju porudzbine");
-            }
+            
+            SendRequest(Operation.DodajNovuPorudzbinu, porudzbina);
+            GetResponseNoReturn();
+            
         }
 
         public List<Porudzbina> VratiSvePorudzbine()
         {
-            Request request = new Request
-            {
-                Operation = Operation.VratiSvePorudzbine
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (List<Porudzbina>)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri vraćanju porudzbina");
-            }
+           
+            SendRequest(Operation.VratiSvePorudzbine);
+            return GetResponse<List<Porudzbina>>();  
         }
 
         public List<Porudzbina> VratiSvePorudzbineSaStola(Sto sto)
         {
-            Request request = new Request
-            {
-                Operation = Operation.VratiSvePorudzbineSaStola,
-                RequestObject= sto
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (response.IsSuccesfull)
-            {
-                return (List<Porudzbina>)response.ResponseObject;
-            }
-            else
-            {
-                throw new Exception("Greska pri vraćanju porudzbina");
-            }
+            SendRequest(Operation.VratiSvePorudzbineSaStola,sto);
+            return GetResponse<List<Porudzbina>>();
         }
 
 
         public void ObrisiPorudzbinu(Porudzbina porudzbina)
         {
-            {
-                Request request = new Request
-                {
-                    Operation = Operation.ObrisiPorudzbinu,
-                    RequestObject = porudzbina
-                };
-                _formatter.Serialize(_stream, request);
-
-                Response response = (Response)_formatter.Deserialize(_stream);
-                if (!response.IsSuccesfull)
-                {
-                    throw new Exception("Greska pri brisanju porudzbine");
-                }
-            }
+  
+            SendRequest(Operation.ObrisiPorudzbinu, porudzbina);
+            GetResponseNoReturn();
         }
 
         public void DodajBrojPorcijaStarojStavci(Porucivanje porucivanje)
         {
 
-            Request request = new Request
-            {
-                Operation = Operation.DodajBrojPorcijaStarojStavci,
-                RequestObject = porucivanje
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (!response.IsSuccesfull)
-            {
-                throw new Exception("Greska pri izmeni porucivanja");
-            }
+            SendRequest(Operation.DodajBrojPorcijaStarojStavci, porucivanje);
+            GetResponseNoReturn();
         }
 
         public void ObrisiPorucivanjeZaStavku(Porucivanje porucivanje)
         {
 
-            Request request = new Request
-            {
-                Operation = Operation.ObrisiPorucivanjeZaStavku,
-                RequestObject = porucivanje
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (!response.IsSuccesfull)
-            {
-                throw new Exception("Greska pri brisanju porucivanja");
-            }
+            SendRequest(Operation.ObrisiPorucivanjeZaStavku, porucivanje);
+            GetResponseNoReturn();
         }
 
         public void DodajNovoPorucivanje(Porucivanje porucivanje)
         {
-            Request request = new Request
-            {
-                Operation = Operation.DodajNovoPorucivanje,
-                RequestObject = porucivanje
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (!response.IsSuccesfull)
-            {
-                throw new Exception("Greska pri dodavanju porucivanja");
-            }
+            SendRequest(Operation.DodajNovoPorucivanje, porucivanje);
+            GetResponseNoReturn();
         }
 
         public void PromeniPorudzbinu(Porudzbina porudzbina)
         {
-
-            Request request = new Request
-            {
-                Operation = Operation.PromeniPorudzbinu,
-                RequestObject = porudzbina
-            };
-            _formatter.Serialize(_stream, request);
-
-            Response response = (Response)_formatter.Deserialize(_stream);
-            if (!response.IsSuccesfull)
-            {
-                throw new Exception("Greska pri izmeni porudzbine");
-            }
+            SendRequest(Operation.PromeniPorudzbinu, porudzbina);
+            GetResponseNoReturn();
 
         }
 

@@ -1,5 +1,6 @@
 ﻿
 using Domain;
+using Restaurant.Exceptions;
 using Restaurant.GuiControllers;
 using Restaurant.ServerCommunication;
 using System;
@@ -22,7 +23,14 @@ namespace Restaurant.UserControls
         {
             InitializeComponent();
             _controllerPorudzbine = new ControllerPorudzbine(this);
-            _controllerPorudzbine.initData();
+            try
+            {
+                _controllerPorudzbine.initData();
+            }
+            catch (ServerCommunicationException ex)
+            {
+                throw ex;
+            }
         }
 
         

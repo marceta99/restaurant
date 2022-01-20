@@ -1,5 +1,6 @@
 ﻿
 using Domain;
+using Restaurant.Exceptions;
 using Restaurant.GuiControllers;
 using Restaurant.ServerCommunication;
 using Restaurant.UserControls;
@@ -28,44 +29,75 @@ namespace Restaurant
 
         private void buttonStolovi_Click(object sender, EventArgs e)
         {
-            panelLeft.Controls.Clear();
-            UserControlStolovi ucStolovi = new UserControlStolovi
+            try
             {
-                Dock = DockStyle.Fill
-            };
-            panelLeft.Controls.Add(ucStolovi);
+                panelLeft.Controls.Clear();
+                UserControlStolovi ucStolovi = new UserControlStolovi
+                {
+                    Dock = DockStyle.Fill
+                };
+                panelLeft.Controls.Add(ucStolovi);
+            }
+            catch (ServerCommunicationException ex)
+            {
+                MessageBox.Show("Greska sa serverom");
+                throw ex;
+            }
         }
 
         private void buttonStavkeCenovnika_Click(object sender, EventArgs e)
         {
-            panelLeft.Controls.Clear();
-            UserControlStavkaCenovnika ucStavka = new UserControlStavkaCenovnika
+            try
             {
-                Dock = DockStyle.Fill
-            };
-            panelLeft.Controls.Add(ucStavka);
+                panelLeft.Controls.Clear();
+                UserControlStavkaCenovnika ucStavka = new UserControlStavkaCenovnika
+                {
+                    Dock = DockStyle.Fill
+                };
+                panelLeft.Controls.Add(ucStavka);
+            }
+            catch (ServerCommunicationException ex)
+            {
+                MessageBox.Show("Greska sa serverom");
+                throw ex;
+            }
         }
 
         private void buttonPorucivanje_Click(object sender, EventArgs e)
         {
-            panelLeft.Controls.Clear();
-            UserControlPorucivanje ucPorucivanje = new UserControlPorucivanje
+            try
             {
-                Dock = DockStyle.Fill
-            };
-            panelLeft.Controls.Add(ucPorucivanje);
+                panelLeft.Controls.Clear();
+                UserControlPorucivanje ucPorucivanje = new UserControlPorucivanje
+                {
+                    Dock = DockStyle.Fill
+                };
+                panelLeft.Controls.Add(ucPorucivanje);
+            }catch(ServerCommunicationException ex)
+            {
+                MessageBox.Show("Greska sa serverom");
+                throw ex;
+            }
         }
 
         private void buttonPorudzbine_Click(object sender, EventArgs e)
         {
-            panelLeft.Controls.Clear();
-            UserControlPorudzbine ucPorudzbine = new UserControlPorudzbine
+            try
             {
-                Dock = DockStyle.Fill
-            };
-            panelLeft.Controls.Add(ucPorudzbine);
-        }
+                panelLeft.Controls.Clear();
+                UserControlPorudzbine ucPorudzbine = new UserControlPorudzbine
+                {
+                    Dock = DockStyle.Fill
+                };
+                panelLeft.Controls.Add(ucPorudzbine);
 
+            }
+            catch (ServerCommunicationException ex)
+            {
+                MessageBox.Show("Greska sa serverom");
+                throw ex;
+            }
+        }
 
     }
 }

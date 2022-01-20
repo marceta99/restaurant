@@ -1,5 +1,6 @@
 ﻿
 using Domain;
+using Restaurant.Exceptions;
 using Restaurant.GuiControllers;
 using Restaurant.ServerCommunication;
 using System;
@@ -23,6 +24,7 @@ namespace Restaurant
             InitializeComponent();
             _controllerLogin = new ControllerLogin(this);
             _controllerLogin.initData();
+        
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Restaurant.GuiControllers;
+﻿using Restaurant.Exceptions;
+using Restaurant.GuiControllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,24 @@ namespace Restaurant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            FormLogin loginForma = new FormLogin();
-            loginForma.ShowDialog();
-            DialogResult rezultatLoginForme = loginForma.DialogResult;
-
-            if(rezultatLoginForme == DialogResult.OK)
+            while (true)
             {
-                Application.Run(new FormMain());
+                FormLogin loginForma = new FormLogin();
+                loginForma.ShowDialog();
+                DialogResult rezultatLoginForme = loginForma.DialogResult;
+
+                if (rezultatLoginForme == DialogResult.OK)
+                {
+                    try
+                    {
+                        Application.Run(new FormMain());
+
+                    }catch(ServerCommunicationException ex){}
+                }
+                else
+                {
+                    break;
+                }
             }
 
         }

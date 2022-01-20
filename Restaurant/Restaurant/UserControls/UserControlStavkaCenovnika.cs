@@ -1,5 +1,6 @@
 ﻿
 using Domain;
+using Restaurant.Exceptions;
 using Restaurant.GuiControllers;
 using Restaurant.ServerCommunication;
 using System;
@@ -22,8 +23,14 @@ namespace Restaurant.UserControls
         {
             InitializeComponent();
             controllerStavkaCenovnika = new ControllerStavkaCenovnika(this);
-            controllerStavkaCenovnika.initData();
-
+            try
+            {
+                controllerStavkaCenovnika.initData();
+            }
+            catch (ServerCommunicationException ex)
+            {
+                throw ex;
+            }
         }
     }
 }

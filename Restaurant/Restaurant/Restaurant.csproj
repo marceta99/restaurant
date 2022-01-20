@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\ServerCommunicationException.cs" />
     <Compile Include="FormIzmenaNaplataStavke.cs">
       <SubType>Form</SubType>
     </Compile>
