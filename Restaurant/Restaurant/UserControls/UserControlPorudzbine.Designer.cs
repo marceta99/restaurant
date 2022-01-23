@@ -42,6 +42,7 @@ namespace Restaurant.UserControls
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFiltriraj = new System.Windows.Forms.Button();
             this.groupBoxfilter = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSvePorudzbine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetaljiPorudzbine)).BeginInit();
             this.groupBoxfilter.SuspendLayout();
@@ -56,7 +57,6 @@ namespace Restaurant.UserControls
             this.comboBoxFilterStolovi.Name = "comboBoxFilterStolovi";
             this.comboBoxFilterStolovi.Size = new System.Drawing.Size(157, 30);
             this.comboBoxFilterStolovi.TabIndex = 46;
-           
             // 
             // buttonIzmeniPorudzbinu
             // 
@@ -67,7 +67,6 @@ namespace Restaurant.UserControls
             this.buttonIzmeniPorudzbinu.TabIndex = 45;
             this.buttonIzmeniPorudzbinu.Text = "Izmeni Izabranu Porudzbinu";
             this.buttonIzmeniPorudzbinu.UseVisualStyleBackColor = true;
-            
             // 
             // buttonIzbrisiPorudzbinu
             // 
@@ -78,7 +77,6 @@ namespace Restaurant.UserControls
             this.buttonIzbrisiPorudzbinu.TabIndex = 44;
             this.buttonIzbrisiPorudzbinu.Text = "Izbrisi izabranu porudzbinu";
             this.buttonIzbrisiPorudzbinu.UseVisualStyleBackColor = true;
-            
             // 
             // label3
             // 
@@ -100,17 +98,16 @@ namespace Restaurant.UserControls
             this.dataGridViewSvePorudzbine.RowTemplate.Height = 24;
             this.dataGridViewSvePorudzbine.Size = new System.Drawing.Size(862, 176);
             this.dataGridViewSvePorudzbine.TabIndex = 42;
-            
             // 
             // dataGridViewDetaljiPorudzbine
             // 
             this.dataGridViewDetaljiPorudzbine.BackgroundColor = System.Drawing.Color.Tan;
             this.dataGridViewDetaljiPorudzbine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDetaljiPorudzbine.Location = new System.Drawing.Point(105, 321);
+            this.dataGridViewDetaljiPorudzbine.Location = new System.Drawing.Point(105, 358);
             this.dataGridViewDetaljiPorudzbine.Name = "dataGridViewDetaljiPorudzbine";
             this.dataGridViewDetaljiPorudzbine.RowHeadersWidth = 51;
             this.dataGridViewDetaljiPorudzbine.RowTemplate.Height = 24;
-            this.dataGridViewDetaljiPorudzbine.Size = new System.Drawing.Size(971, 215);
+            this.dataGridViewDetaljiPorudzbine.Size = new System.Drawing.Size(862, 215);
             this.dataGridViewDetaljiPorudzbine.TabIndex = 49;
             // 
             // buttonNaplati
@@ -122,7 +119,6 @@ namespace Restaurant.UserControls
             this.buttonNaplati.TabIndex = 50;
             this.buttonNaplati.Text = "Naplati";
             this.buttonNaplati.UseVisualStyleBackColor = true;
-            
             // 
             // comboBoxStatusPorudzbine
             // 
@@ -133,7 +129,6 @@ namespace Restaurant.UserControls
             this.comboBoxStatusPorudzbine.Name = "comboBoxStatusPorudzbine";
             this.comboBoxStatusPorudzbine.Size = new System.Drawing.Size(137, 30);
             this.comboBoxStatusPorudzbine.TabIndex = 52;
-            
             // 
             // label1
             // 
@@ -154,7 +149,6 @@ namespace Restaurant.UserControls
             this.buttonFiltriraj.TabIndex = 53;
             this.buttonFiltriraj.Text = "Filter";
             this.buttonFiltriraj.UseVisualStyleBackColor = true;
-            
             // 
             // groupBoxfilter
             // 
@@ -169,10 +163,21 @@ namespace Restaurant.UserControls
             this.groupBoxfilter.TabStop = false;
             this.groupBoxfilter.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(430, 320);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(261, 24);
+            this.label2.TabIndex = 53;
+            this.label2.Text = "Detalji o izabranoj porudzbini :";
+            // 
             // UserControlPorudzbine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBoxfilter);
             this.Controls.Add(this.buttonFiltriraj);
             this.Controls.Add(this.buttonNaplati);
@@ -187,6 +192,7 @@ namespace Restaurant.UserControls
             this.groupBoxfilter.ResumeLayout(false);
             this.groupBoxfilter.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -203,6 +209,7 @@ namespace Restaurant.UserControls
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonFiltriraj;
         private System.Windows.Forms.GroupBox groupBoxfilter;
+        private Label label2;
 
         public ComboBox ComboBoxFilterStolovi { get => comboBoxFilterStolovi; set => comboBoxFilterStolovi = value; }
         public Button ButtonIzmeniPorudzbinu { get => buttonIzmeniPorudzbinu; set => buttonIzmeniPorudzbinu = value; }

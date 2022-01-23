@@ -41,7 +41,7 @@ namespace Restaurant.GuiControllers
                 KorisnickoIme = korisnickoIme,
                 Sifra = sifra
             };
-            if (!_loginFailed)
+            if (!_loginFailed)//ako se vec jednom connectovao na server, ne treba ponovo
             {
                 try
                 {
@@ -61,13 +61,13 @@ namespace Restaurant.GuiControllers
                 if (korisnik.Uloga == Uloga.Konobar)
                 {
                     MessageBox.Show($"Dobrodosli {korisnik.KorisnickoIme} : Konobar");
-                    Session.Instance.TrenutniKorisnik.Uloga = Uloga.Konobar;
+                    //Session.Instance.TrenutniKorisnik.Uloga = Uloga.Konobar;
                     formLogin.DialogResult = DialogResult.OK;
                 }
                 else
                 {
                     MessageBox.Show($"Dobrodosli {korisnik.KorisnickoIme} : Menadzer");
-                    Session.Instance.TrenutniKorisnik.Uloga = Uloga.Menadzer;
+                    //Session.Instance.TrenutniKorisnik.Uloga = Uloga.Menadzer;
                     formLogin.DialogResult = DialogResult.OK;
                 }
             }

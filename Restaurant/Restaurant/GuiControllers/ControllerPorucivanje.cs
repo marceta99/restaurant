@@ -30,6 +30,8 @@ namespace Restaurant.GuiControllers
             userControlPorucivanje.ComboBoxSto.DataSource = _stolovi;
             userControlPorucivanje.ComboBoxKategorija.DataSource = Communication.Instance.VratiSveKategorije();
             userControlPorucivanje.ComboBoxBrojPorcija.DataSource = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+            
+            
 
             _novaPorudzbina = new Porudzbina
             {

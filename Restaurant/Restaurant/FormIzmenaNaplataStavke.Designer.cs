@@ -162,7 +162,6 @@ namespace Restaurant
             this.comboBoxKategorija.Name = "comboBoxKategorija";
             this.comboBoxKategorija.Size = new System.Drawing.Size(168, 30);
             this.comboBoxKategorija.TabIndex = 39;
-            
             // 
             // label2
             // 
@@ -203,7 +202,6 @@ namespace Restaurant
             this.buttonDodajStavkuUPorudzbinu.TabIndex = 23;
             this.buttonDodajStavkuUPorudzbinu.Text = "Dodaj novu stavku u porudzbinu";
             this.buttonDodajStavkuUPorudzbinu.UseVisualStyleBackColor = true;
-            
             // 
             // buttonIzbrisiIzabranuStavku
             // 
@@ -214,16 +212,15 @@ namespace Restaurant
             this.buttonIzbrisiIzabranuStavku.TabIndex = 54;
             this.buttonIzbrisiIzabranuStavku.Text = "Izbrisi izabranu stavku";
             this.buttonIzbrisiIzabranuStavku.UseVisualStyleBackColor = true;
-            
             // 
             // dataGridViewStavkeUPorudzbini
             // 
             this.dataGridViewStavkeUPorudzbini.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStavkeUPorudzbini.Location = new System.Drawing.Point(126, 427);
+            this.dataGridViewStavkeUPorudzbini.Location = new System.Drawing.Point(265, 428);
             this.dataGridViewStavkeUPorudzbini.Name = "dataGridViewStavkeUPorudzbini";
             this.dataGridViewStavkeUPorudzbini.RowHeadersWidth = 51;
             this.dataGridViewStavkeUPorudzbini.RowTemplate.Height = 24;
-            this.dataGridViewStavkeUPorudzbini.Size = new System.Drawing.Size(702, 229);
+            this.dataGridViewStavkeUPorudzbini.Size = new System.Drawing.Size(376, 229);
             this.dataGridViewStavkeUPorudzbini.TabIndex = 53;
             // 
             // buttonSmanjiBrojPorcija
@@ -235,7 +232,6 @@ namespace Restaurant
             this.buttonSmanjiBrojPorcija.TabIndex = 60;
             this.buttonSmanjiBrojPorcija.Text = "Smanji Broj Porcija";
             this.buttonSmanjiBrojPorcija.UseVisualStyleBackColor = true;
-            
             // 
             // FormIzmenaNaplataStavke
             // 

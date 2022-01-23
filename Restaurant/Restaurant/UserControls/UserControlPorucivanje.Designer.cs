@@ -185,11 +185,11 @@ namespace Restaurant.UserControls
             // dataGridViewStavkeUPorudzbini
             // 
             this.dataGridViewStavkeUPorudzbini.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStavkeUPorudzbini.Location = new System.Drawing.Point(60, 471);
+            this.dataGridViewStavkeUPorudzbini.Location = new System.Drawing.Point(232, 466);
             this.dataGridViewStavkeUPorudzbini.Name = "dataGridViewStavkeUPorudzbini";
             this.dataGridViewStavkeUPorudzbini.RowHeadersWidth = 51;
             this.dataGridViewStavkeUPorudzbini.RowTemplate.Height = 24;
-            this.dataGridViewStavkeUPorudzbini.Size = new System.Drawing.Size(769, 229);
+            this.dataGridViewStavkeUPorudzbini.Size = new System.Drawing.Size(371, 261);
             this.dataGridViewStavkeUPorudzbini.TabIndex = 42;
             // 
             // label1

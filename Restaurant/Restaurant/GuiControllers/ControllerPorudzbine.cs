@@ -25,6 +25,8 @@ namespace Restaurant.GuiControllers
         }
         internal void initData()
         {
+            //userControlPorudzbine.DataGridViewDetaljiPorudzbine.Visible = false;
+
             _listaPorudzbina = new BindingList<Porudzbina>(Communication.Instance.VratiSvePorudzbine());
             userControlPorudzbine.DataGridViewSvePorudzbine.DataSource = _listaPorudzbina;
 
@@ -32,7 +34,7 @@ namespace Restaurant.GuiControllers
             userControlPorudzbine.ComboBoxStatusPorudzbine.DataSource = Enum.GetValues(typeof(StatusPorudzbine));
             userControlPorudzbine.ComboBoxStatusPorudzbine.SelectedItem = StatusPorudzbine.Kreirana;
             userControlPorudzbine.ComboBoxFilterStolovi.DataSource = Communication.Instance.VratiSveStoloveSaStatusomPorudzbine(StatusPorudzbine.Kreirana);
-       
+
             //eventovi :
             userControlPorudzbine.ButtonIzbrisiPorudzbinu.Click += buttonIzbrisiPorudzbinu_Click;
             userControlPorudzbine.ButtonIzmeniPorudzbinu.Click += buttonIzmeniPorudzbinu_Click;
@@ -117,11 +119,6 @@ namespace Restaurant.GuiControllers
             BindingList<Porudzbina> listaPorudzbinaSaIzabranimStatusom = new BindingList<Porudzbina>();
             Sto s;
 
-            /*if (_prviLoad == 1 ||_prviLoad == 2)
-            {
-                _prviLoad++;
-                return;
-            }*/
             StatusPorudzbine izbranStaus = (StatusPorudzbine)userControlPorudzbine.ComboBoxStatusPorudzbine.SelectedItem;
             if (userControlPorudzbine.ComboBoxFilterStolovi.SelectedItem == null) //ako nije selektovano nista od stolova
             {
@@ -171,6 +168,7 @@ namespace Restaurant.GuiControllers
         }
         private void dataGridViewSvePorudzbine_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+
             if (_loadBrojac == 1 || _loadBrojac == 2)
             {
                 _loadBrojac++;
@@ -180,6 +178,7 @@ namespace Restaurant.GuiControllers
             {
                 return;
             }
+            //userControlPorudzbine.DataGridViewDetaljiPorudzbine.Visible = true;
             Porudzbina porudzbina = (Porudzbina)userControlPorudzbine.DataGridViewSvePorudzbine.SelectedRows[0].DataBoundItem;
 
             _stavkePorudzbine = new BindingList<StavkaCenovnika>(VratiSveStavkeJednePorudzbine(porudzbina));
@@ -188,11 +187,7 @@ namespace Restaurant.GuiControllers
         }
         private void comboBoxStatusPorudzbine_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*if (_prviLoadStatus == 1)
-            {
-                _prviLoadStatus++;
-                return;
-            }*/
+            
             StatusPorudzbine izbranStaus = (StatusPorudzbine)userControlPorudzbine.ComboBoxStatusPorudzbine.SelectedItem;
             userControlPorudzbine.ComboBoxFilterStolovi.DataSource = Communication.Instance.VratiSveStoloveSaStatusomPorudzbine(izbranStaus);
             comboBoxFilterStolovi_SelectedIndexChanged(sender, e);
