@@ -61,9 +61,9 @@ namespace Restaurant.UserControls
             // buttonIzmeniPorudzbinu
             // 
             this.buttonIzmeniPorudzbinu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonIzmeniPorudzbinu.Location = new System.Drawing.Point(593, 36);
+            this.buttonIzmeniPorudzbinu.Location = new System.Drawing.Point(592, 33);
             this.buttonIzmeniPorudzbinu.Name = "buttonIzmeniPorudzbinu";
-            this.buttonIzmeniPorudzbinu.Size = new System.Drawing.Size(118, 83);
+            this.buttonIzmeniPorudzbinu.Size = new System.Drawing.Size(129, 83);
             this.buttonIzmeniPorudzbinu.TabIndex = 45;
             this.buttonIzmeniPorudzbinu.Text = "Izmeni Izabranu Porudzbinu";
             this.buttonIzmeniPorudzbinu.UseVisualStyleBackColor = true;
@@ -71,7 +71,7 @@ namespace Restaurant.UserControls
             // buttonIzbrisiPorudzbinu
             // 
             this.buttonIzbrisiPorudzbinu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonIzbrisiPorudzbinu.Location = new System.Drawing.Point(717, 36);
+            this.buttonIzbrisiPorudzbinu.Location = new System.Drawing.Point(727, 34);
             this.buttonIzbrisiPorudzbinu.Name = "buttonIzbrisiPorudzbinu";
             this.buttonIzbrisiPorudzbinu.Size = new System.Drawing.Size(123, 81);
             this.buttonIzbrisiPorudzbinu.TabIndex = 44;
@@ -92,11 +92,11 @@ namespace Restaurant.UserControls
             // 
             this.dataGridViewSvePorudzbine.BackgroundColor = System.Drawing.Color.Tan;
             this.dataGridViewSvePorudzbine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSvePorudzbine.Location = new System.Drawing.Point(105, 125);
+            this.dataGridViewSvePorudzbine.Location = new System.Drawing.Point(207, 141);
             this.dataGridViewSvePorudzbine.Name = "dataGridViewSvePorudzbine";
             this.dataGridViewSvePorudzbine.RowHeadersWidth = 51;
             this.dataGridViewSvePorudzbine.RowTemplate.Height = 24;
-            this.dataGridViewSvePorudzbine.Size = new System.Drawing.Size(862, 176);
+            this.dataGridViewSvePorudzbine.Size = new System.Drawing.Size(630, 176);
             this.dataGridViewSvePorudzbine.TabIndex = 42;
             // 
             // dataGridViewDetaljiPorudzbine
@@ -113,7 +113,7 @@ namespace Restaurant.UserControls
             // buttonNaplati
             // 
             this.buttonNaplati.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNaplati.Location = new System.Drawing.Point(846, 34);
+            this.buttonNaplati.Location = new System.Drawing.Point(856, 34);
             this.buttonNaplati.Name = "buttonNaplati";
             this.buttonNaplati.Size = new System.Drawing.Size(111, 83);
             this.buttonNaplati.TabIndex = 50;

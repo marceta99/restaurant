@@ -37,6 +37,16 @@ namespace Restaurant.GuiControllers
             formIzmenaNaplataStavke.ComboBoxKategorija.DataSource = Communication.Instance.VratiSveKategorije();
             formIzmenaNaplataStavke.ComboBoxBrojPorcija.DataSource = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["ImeTabele"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["InsertVrednosti"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["Id"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["Where"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["Set"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["JoinTableName"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["JoinFirst"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["JoinSecond"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["JoinSecondTableName"].Visible = false;
+            formIzmenaNaplataStavke.DataGridViewStavkeUPorudzbini.Columns["JoinJoinON"].Visible = false;
             //eventovi : 
             formIzmenaNaplataStavke.ComboBoxKategorija.SelectedIndexChanged += comboBoxKategorija_SelectedIndexChanged;
             formIzmenaNaplataStavke.ButtonDodajStavkuUPorudzbinu.Click += buttonDodajStavkuUPorudzbinu_Click;

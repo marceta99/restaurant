@@ -33,6 +33,17 @@ namespace Restaurant.GuiControllers
 
             userControlStolovi.DataGridViewStolovi.DataSource = _stolovi;
             userControlStolovi.DataGridViewStolovi.Columns["StoID"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["ImeTabele"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["InsertVrednosti"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["Id"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["Where"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["Set"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["JoinTableName"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["JoinFirst"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["JoinSecond"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["JoinSecondTableName"].Visible = false;
+            userControlStolovi.DataGridViewStolovi.Columns["JoinJoinON"].Visible = false;
+            
 
             //eventovi : 
             userControlStolovi.ButtonDodajSto.Click += buttonDodajSto_Click;

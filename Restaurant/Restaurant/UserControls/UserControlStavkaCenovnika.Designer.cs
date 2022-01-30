@@ -103,7 +103,7 @@ namespace Restaurant.UserControls
             this.dataGridViewStavke.Name = "dataGridViewStavke";
             this.dataGridViewStavke.RowHeadersWidth = 51;
             this.dataGridViewStavke.RowTemplate.Height = 24;
-            this.dataGridViewStavke.Size = new System.Drawing.Size(702, 229);
+            this.dataGridViewStavke.Size = new System.Drawing.Size(760, 229);
             this.dataGridViewStavke.TabIndex = 21;
             // 
             // comboBoxValuta

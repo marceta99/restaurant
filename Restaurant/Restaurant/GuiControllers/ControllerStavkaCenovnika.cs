@@ -34,6 +34,18 @@ namespace Restaurant.GuiControllers
             userControlStavkaCenovnika.ComboBoxKategorija.DataSource = Communication.Instance.VratiSveKategorije();
             userControlStavkaCenovnika.ComboBoxFilterKategorije.DataSource = Communication.Instance.VratiSveKategorije();
 
+           
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["ImeTabele"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["InsertVrednosti"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["Id"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["Where"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["Set"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["JoinTableName"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["JoinFirst"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["JoinSecond"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["JoinSecondTableName"].Visible = false;
+            userControlStavkaCenovnika.DataGridViewStavke.Columns["JoinJoinON"].Visible = false;
+
             //eventovi :
 
             userControlStavkaCenovnika.ButtonDodajStavku.Click += buttonDodajStavku_Click;

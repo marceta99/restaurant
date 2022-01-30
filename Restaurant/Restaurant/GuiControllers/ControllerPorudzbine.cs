@@ -35,6 +35,20 @@ namespace Restaurant.GuiControllers
             userControlPorudzbine.ComboBoxStatusPorudzbine.SelectedItem = StatusPorudzbine.Kreirana;
             userControlPorudzbine.ComboBoxFilterStolovi.DataSource = Communication.Instance.VratiSveStoloveSaStatusomPorudzbine(StatusPorudzbine.Kreirana);
 
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["ImeTabele"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["InsertVrednosti"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["Id"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["Where"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["Set"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["JoinTableName"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["JoinFirst"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["JoinSecond"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["JoinSecondTableName"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["JoinJoinON"].Visible = false;
+            userControlPorudzbine.DataGridViewSvePorudzbine.Columns["PorudzbinaID"].Visible = false;
+
+            
+
             //eventovi :
             userControlPorudzbine.ButtonIzbrisiPorudzbinu.Click += buttonIzbrisiPorudzbinu_Click;
             userControlPorudzbine.ButtonIzmeniPorudzbinu.Click += buttonIzmeniPorudzbinu_Click;
@@ -183,6 +197,17 @@ namespace Restaurant.GuiControllers
 
             _stavkePorudzbine = new BindingList<StavkaCenovnika>(VratiSveStavkeJednePorudzbine(porudzbina));
             userControlPorudzbine.DataGridViewDetaljiPorudzbine.DataSource = _stavkePorudzbine;
+
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["ImeTabele"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["InsertVrednosti"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["Id"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["Where"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["Set"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["JoinTableName"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["JoinFirst"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["JoinSecond"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["JoinSecondTableName"].Visible = false;
+            userControlPorudzbine.DataGridViewDetaljiPorudzbine.Columns["JoinJoinON"].Visible = false;
 
         }
         private void comboBoxStatusPorudzbine_SelectedIndexChanged(object sender, EventArgs e)

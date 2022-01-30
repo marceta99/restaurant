@@ -30,8 +30,7 @@ namespace Restaurant.GuiControllers
             userControlPorucivanje.ComboBoxSto.DataSource = _stolovi;
             userControlPorucivanje.ComboBoxKategorija.DataSource = Communication.Instance.VratiSveKategorije();
             userControlPorucivanje.ComboBoxBrojPorcija.DataSource = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
-            
-            
+           
 
             _novaPorudzbina = new Porudzbina
             {
@@ -124,8 +123,17 @@ namespace Restaurant.GuiControllers
 
             _novaPorudzbina.NaruceneStavke.Add(narucenaStavka);
 
-
             RefresujVrednostiUdataGridView();
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["ImeTabele"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["InsertVrednosti"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["Id"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["Where"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["Set"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["JoinTableName"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["JoinFirst"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["JoinSecond"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["JoinSecondTableName"].Visible = false;
+            userControlPorucivanje.DataGridViewStavkeUPorudzbini.Columns["JoinJoinON"].Visible = false;
         }
         private void RefresujVrednostiUdataGridView()
         {
